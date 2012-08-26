@@ -18,8 +18,12 @@ handlers:
 - url: /img
   static_dir: img
 
+- url: /home
+  script: home.app
+
 - url: /.*
-  script: helloworld.app
+  static_files: allhtml/404.html
+  upload: allhtml/404.html
 
 libraries:
 - name: jinja2

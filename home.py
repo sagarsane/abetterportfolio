@@ -26,15 +26,6 @@ class MainPage(Handler):
         self.render("index.html")
         
     def get(self):
-        #self.response.headers['Content-Type'] = 'text/plain'
-        #self.response.out.write('Hello, webapp World!')
         self.render_front()
 
-app = webapp2.WSGIApplication([('/', MainPage)], debug=True)
-
-
-#def main():
-#    run_wsgi_app(application)
-
-#if __name__ == "__main__":
-#    main()
+app = webapp2.WSGIApplication([('/home', MainPage)], debug=True)
