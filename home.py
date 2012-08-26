@@ -1,6 +1,7 @@
 import webapp2
 import os
 import jinja2
+from projects import projects_function
 #import logging
 #import urllib2
 
@@ -20,12 +21,16 @@ class Handler(webapp2.RequestHandler):
 
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
+
+    def render_front(self, template):
+        self.render(template)        
         
 class MainPage(Handler):
-    def render_front(self):
-        self.render("index.html")
-        
     def get(self):
-        self.render_front()
+        self.render_front("index.html")
 
-app = webapp2.WSGIApplication([('/home', MainPage)], debug=True)
+class Projects(Handler):
+    def get(self):
+        self.render_front(projects_function())
+
+app = webapp2.WSGIApplication([('/home', MainPage), ('/projects', Projects)], debug=True)

@@ -144,10 +144,10 @@ html[xmlns] .clearfix{display:block;}
 .metro .metro-sections .metro-section .tile .tile-announce .announce-description .label.label-color-darken{background:#1c1c1c;}.metro .metro-sections .metro-section .tile .tile-announce .announce-description .label.label-color-darken .stick{border-top:10px solid #1c1c1c !important;}
 .metro .metro-sections .metro-section .tile.tile-double{width:310px;}.metro .metro-sections .metro-section .tile.tile-double .tile-icon-large{margin-top:20px;margin-left:107px;}
 .metro .metro-sections .metro-section .tile.tile-double .tile-icon-cover,.metro .metro-sections .metro-section .tile.tile-double .tile-icon-large{width:310px;}
-.metro .metro-sections .metro-section .tile.tile-double-vertical{height:310px;}.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{margin-top:20px;margin-left:107px;}
+.metro .metro-sections .metro-section .tile.tile-double-vertical{height:370px;}.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{margin-top:20px;margin-left:107px;}
 .metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-cover,.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{height:310px;}
-.metro .metro-sections .metro-section .tile.tile-triple-vertical{height:470px;}.metro .metro-sections .metro-section .tile.tile-triple-vertical .tile-icon-large{padding-top:187px;}
-.metro .metro-sections .metro-section .tile.tile-quadro-vertical{height:630px;}.metro .metro-sections .metro-section .tile.tile-quadro-vertical .tile-icon-large{padding-top:267px;}
+.metro .metro-sections .metro-section .tile.tile-triple-vertical{height:520px;}.metro .metro-sections .metro-section .tile.tile-triple-vertical .tile-icon-large{padding-top:187px;}
+.metro .metro-sections .metro-section .tile.tile-quadro-vertical{height:650px;}.metro .metro-sections .metro-section .tile.tile-quadro-vertical .tile-icon-large{padding-top:267px;}
 .metro .metro-sections .metro-section .tile.tile-triple{width:470px;}.metro .metro-sections .metro-section .tile.tile-triple .tile-icon-large{width:470px;}
 .metro .metro-sections .metro-section .tile.tile-quadro{width:630px;}.metro .metro-sections .metro-section .tile.tile-quadro .tile-icon-large{width:630px;}
 .metro .metro-sections .metro-section.size1{width:160px !important;}

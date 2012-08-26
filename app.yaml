@@ -21,6 +21,9 @@ handlers:
 - url: /home
   script: home.app
 
+- url: /projects
+  script: home.app
+  
 - url: /.*
   static_files: allhtml/404.html
   upload: allhtml/404.html
