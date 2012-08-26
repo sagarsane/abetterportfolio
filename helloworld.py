@@ -30,7 +30,7 @@ class MainPage(Handler):
         #self.response.out.write('Hello, webapp World!')
         self.render_front()
 
-app = webapp2.WSGIApplication([('/home', MainPage)], debug=True)
+app = webapp2.WSGIApplication([('/', MainPage)], debug=True)
 
 
 #def main():
