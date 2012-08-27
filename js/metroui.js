@@ -135,7 +135,7 @@
                     this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
                 }
             }).mousewheel(function (event, delta) {
-                this.scrollLeft -= (delta * 30);
+                this.scrollLeft -= (delta * 50);
                 //console.log(this.scrollLeft);
             }).css({
                 'overflow' : 'hidden'
@@ -154,7 +154,7 @@
                     this.scrollTop = $(this).data('scrollTop') + $(this).data('y') - event.clientY;
                 }
             }).mousewheel(function (event, delta) {
-                this.scrollTop -= (delta * 30);
+                this.scrollTop -= (delta * 50);
                 //console.log(this.scrollLeft);
             }).css({
                 'overflow' : 'hidden'

@@ -33,4 +33,20 @@ class Projects(Handler):
     def get(self):
         self.render_front(projects_function())
 
-app = webapp2.WSGIApplication([('/home', MainPage), ('/projects', Projects)], debug=True)
+class Experience(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/html'
+        self.write("<div class='tile-text'><h2>Bank of America</h2><br/><p>Technology Associate</p><p>June 2012 - Current</p></div>" +
+                   "<div class='tile-text'><h2>I-Cubed</h2><br/><p>Software Programmer (Part-time)</p><p>August 2011 - May 2012</p></div>" +
+                   "<div class='tile-text'><h2>Bank of America</h2><br/><p>Technology Analyst Intern</p><p>June 2011 - August 2012</p></div>")
+        
+class Education(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/html'
+        self.write("<div class='tile-text'><h2>North Carolina State University</h2><br/><p>Masters in Computer Networking - CS</p><p>GPA : 3.63/4.00</p></div>" +
+                   "<div class='tile-text'><h2>Pune Institute of Computer Technology</h2><br/><p>Bachelors in Information Technology</p><p>GPA: 3.88/4.00</p></div>")
+        
+app = webapp2.WSGIApplication([('/home', MainPage), 
+                               ('/projects', Projects), 
+                               ('/experience', Experience),
+                               ('/education', Education)], debug=True)

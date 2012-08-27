@@ -105,9 +105,23 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#experience_tile{
+	position:absolute;
+	z-index:100;
+}
 
+.experience_slides_container{
+	overflow:hidden;
+	position:relative;
+	display: none;
+}
 
-
+#experience_tile .slide{
+	padding: 20px;
+	width:auto;
+	height:auto;
+	display: block;
+}
 
 
 

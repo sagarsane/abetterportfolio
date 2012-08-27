@@ -23,6 +23,12 @@ handlers:
 
 - url: /projects
   script: home.app
+
+- url: /experience
+  script: home.app
+
+- url: /education
+  script: home.app
   
 - url: /.*
   static_files: allhtml/404.html
