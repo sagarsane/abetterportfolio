@@ -13,22 +13,32 @@ if (!(window.console && console.log)) {
 
 // Place any jQuery/helper plugins in here.
 $(document).ready(function() {
-	var exp_data_arr,edu_data_arr;
-	var i_exp = 0, i_edu = 0;
-	var exp_data_cnt = 0, edu_data_cnt;
+	var exp_data_arr,edu_data_arr, proj_data_arr;
+	var i_exp = 0, i_edu = 0, i_proj = 0;
+	var exp_data_cnt = 0, edu_data_cnt = 0, proj_data_cnt = 0;
 	function ExperienceModel(){
 		var self = this;
 		var exp_data = "";
 		var edu_data = "";
+		var proj_data = "";
 		//var i = 0;
 		//var exp_data_cnt = 0;
 		self.experienceContent = ko.observable();
 		self.educationContent = ko.observable();
+		self.projectsContent = ko.observable();
 
 		self.getExperienceContent = function(){
 			//self.experienceContent(null);
-			$.get('/experience', function(data){
-				exp_data = data;
+			$.getJSON('/experience', function(experience){
+				//exp_data = data;
+				$.each(experience, function(entryIndex, entry) {
+					   exp_data += "<div class='tile-text'><h2>" + entryIndex + "</h2><br/>";
+					    
+					   $.each(entry, function(i, subentry) { 
+					       exp_data += "<p>" + subentry + "</p>";
+					   }); 
+					   exp_data += "</div>";
+				});
 				exp_data_arr = exp_data.split("</div>");
 				exp_data_cnt = exp_data_arr.length-1;
 				self.experienceContent(exp_data_arr[i_exp++] + "</div>");
@@ -43,10 +53,40 @@ $(document).ready(function() {
 			});
 		}
 
+		self.getProjectsContent = function(){
+			
+			$.getJSON('/projects', function(projects){
+				$.each(projects, function(entryIndex, entry) {
+					   proj_data += "<div class='tile-text'><h2>" + entryIndex + "</h2><br/>";
+					   proj_data += "<p>" + entry + "</p>" + "</div>"; 
+
+				});
+		
+				proj_data_arr = proj_data.split("</div>");
+				proj_data_cnt = proj_data_arr.length-1;
+				self.projectsContent(proj_data_arr[i_proj++] + "</div>");
+				function change(data_arr){
+					if(i_proj >= proj_data_cnt)
+						i_proj = 0;
+					self.projectsContent(data_arr[i_proj++] + "</div>");
+				}
+				setInterval(function(){change(proj_data_arr)},2650);
+			});
+		}
+
 		self.getEducationContent = function(){
 			//self.experienceContent(null);
-			$.get('/education', function(data){
-				edu_data = data;
+			$.getJSON('/education', function(education){
+				//edu_data = data;
+				$.each(education, function(entryIndex, entry) {
+					   edu_data += "<div class='tile-text'><h2>" + entryIndex + "</h2><br/>";
+					    
+					   $.each(entry, function(i, subentry) { 
+					       edu_data += "<p>" + subentry + "</p>";
+					   }); 
+					   edu_data += "</div>";
+				});
+		
 				edu_data_arr = edu_data.split("</div>");
 				edu_data_cnt = edu_data_arr.length-1;
 				self.educationContent(edu_data_arr[i_edu++] + "</div>");
@@ -64,7 +104,7 @@ $(document).ready(function() {
 		
 		self.getExperienceContent();
 		self.getEducationContent();
-		
+		self.getProjectsContent();
 	}
 	
 	ko.applyBindings(new ExperienceModel());

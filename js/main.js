@@ -1,6 +1,6 @@
 $("#projects_tile").click(function(){
 	//window.location.href = '/home';
-	$(location).attr("href","/projects");
+	$(location).attr("href","/projects_details");
 });
 
 $("#contact_tile").click(function(){

@@ -24,7 +24,6 @@
     	<script src="js/jquery.mousewheel.min.js" type="text/javascript"></script>
     	<script src="js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
     	<script src="js/metroui.js" type="text/javascript"></script>
-    	<script src="js/jquery.smoothDivScroll-1.2.js" type="text/javascript"></script>
     	<script src="js/jquery.smoothdivscroll-1.2-min.js" type="text/javascript"></script>
     	<script src="js/knockout-2.1.0.js" type="text/javascript"></script>
     	
@@ -94,10 +93,8 @@
                            			<div id="education_tile" class="tile-text"  data-bind="html: educationContent">
                            			</div>
                        			</div>
-                       		    <div id="projects_tile" title="Click to see details" class="tile tile-quadro bg-color-orange">
-                           			<div class="tile-text">
-		                                <h2>Projects</h2>
-                               			<p>Dynamic Projects Content</p>
+                       		    <div title="Click to see details" class="tile tile-quadro bg-color-orange">
+                           			<div id="projects_tile" class="tile-text" data-bind="html: projectsContent">
                            			</div>
                        			</div>	
                         	</div>
@@ -136,7 +133,7 @@
         <script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
         <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            var _gaq=[['_setAccount','UA-12568791-3'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));

@@ -1,6 +1,7 @@
 import webapp2
 import os
 import jinja2
+import json
 from projects import projects_function
 #import logging
 #import urllib2
@@ -29,24 +30,49 @@ class MainPage(Handler):
     def get(self):
         self.render_front("index.html")
 
-class Projects(Handler):
+class Projects_details(Handler):
     def get(self):
         self.render_front(projects_function())
 
 class Experience(Handler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
-        self.write("<div class='tile-text'><h2>Bank of America</h2><br/><p>Technology Associate</p><p>June 2012 - Current</p></div>" +
-                   "<div class='tile-text'><h2>I-Cubed</h2><br/><p>Software Programmer (Part-time)</p><p>August 2011 - May 2012</p></div>" +
-                   "<div class='tile-text'><h2>Bank of America</h2><br/><p>Technology Analyst Intern</p><p>June 2011 - August 2012</p></div>")
+        self.response.headers['Content-Type'] = 'application/json'
+        experience = {
+                      "Bank of America" : ["Technology Associate", "June 2012 - Current", " Java Servlets/AJAX/jQuery/MetaData"],
+                      "I-Cubed" : ["Software Programmer (Part-time)", "August 2011 - May 2012", " JS/jQuery/Sencha Touch/Web Scraping/Adobe CQ5 CMS"],
+                      "Bank of America" : ["Technology Analyst Intern", "June 2011 - August 2012", " Very Large DB Management/Windows Java Services/SQL/Batch Scripting"],
+                      "NCSU: College of Design" : ["Software Programmer (Part-time)", "February 2011 - May 2011", "PHP/MySQL/Actionscript/Javascript"],
+                      "NCSU: BTEC" : ["Volunteer Web Developer", "December 2010 - March 2011", "LAMP Stack"]
+                      }
+        
+        self.write(json.dumps(experience))
         
 class Education(Handler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
-        self.write("<div class='tile-text'><h2>North Carolina State University</h2><br/><p>Masters in Computer Networking - CS</p><p>GPA : 3.63/4.00</p></div>" +
-                   "<div class='tile-text'><h2>Pune Institute of Computer Technology</h2><br/><p>Bachelors in Information Technology</p><p>GPA: 3.88/4.00</p></div>")
-        
-app = webapp2.WSGIApplication([('/home', MainPage), 
+        self.response.headers['Content-Type'] = 'application/json'
+        education = {
+                     "North Carolina State University" : ["Masters in Computer Networking - CS", "GPA: 3.63/4.00"],
+                     "Pune Institute of Computer Technology" : ["Bachelors in Information Technology", "GPA: 3.89/4.00"]
+                     }
+        self.write(json.dumps(education))
+
+class Projects(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'
+        projects = {
+                    "Diverse Routing Algorithms (2012)" : "C, Networking",
+                    "Reliable Multicast System (2012)" : "C, Networking",
+                    "Web Based Mashup (2011)" : "HTML5, JS/AJAX/jQuery, PHP, Open APIs",
+                    "Integrity Attestation for Web Services Framework (2011)" : "C, Java, Distributed Systems",
+                    "Collaborative Drawing Android App (2011)" : "Android/Java",
+                    "OS Projects (2010)" : "C, OS",
+                    "Web Based Dashboard for Security Assessment (2009 - 2010)" : "PHP, MySQL, Flex, HTML, XML" 
+                    }
+        self.write(json.dumps(projects))
+
+app = webapp2.WSGIApplication([('/', MainPage),
+                               ('/home', MainPage), 
                                ('/projects', Projects), 
                                ('/experience', Experience),
-                               ('/education', Education)], debug=True)
+                               ('/education', Education),
+                               ('/projects_details', Projects_details)], debug=True)

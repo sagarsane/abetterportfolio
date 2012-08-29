@@ -18,6 +18,9 @@ handlers:
 - url: /img
   static_dir: img
 
+- url: /
+  script: home.app
+
 - url: /home
   script: home.app
 
@@ -29,7 +32,10 @@ handlers:
 
 - url: /education
   script: home.app
-  
+
+- url: /projects_details
+  script: home.app
+
 - url: /.*
   static_files: allhtml/404.html
   upload: allhtml/404.html
