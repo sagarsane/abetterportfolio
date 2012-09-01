@@ -89,7 +89,7 @@ html[xmlns] .clearfix{display:block;}
 .metro .layout .commands{position:fixed;bottom:0;left:0;right:0;display:table-cell;vertical-align:baseline;min-height:100px;display:none;z-index:10000;background:#1e1e1e;}
 .metro .layout .metro-scroll{width:100%;height:100%;overflow:hidden;}.metro .layout .metro-scroll .frames{width:10000px;}
 .metro .layout .metro-scroll-vertical{width:100%;height:100%;}
-.metro .metro-sections{height:auto;position:relative;overflow:hidden;width:10000px;}.metro .metro-sections .metro-section{float:left;margin-right:75px;height:auto;width:960px;position:relative;}.metro .metro-sections .metro-section h2,.metro .metro-sections .metro-section .metro-section-title{color:#000;font-size:18pt;}
+.metro .metro-sections{height:100%;position:relative;overflow:hidden;width:10000px;}.metro .metro-sections .metro-section{float:left;margin-right:75px;height:auto;width:960px;position:relative;}.metro .metro-sections .metro-section h2,.metro .metro-sections .metro-section .metro-section-title{color:#000;font-size:18pt;}
 .metro .metro-sections .metro-section >a{text-decoration:none;}
 .metro .metro-sections .metro-section >a h2{font-weight:500;font-size:22pt;}
 .metro .metro-sections .metro-section >a h2 small{margin-left:10px;font-weight:normal;font-size:12pt;color:#1e1e1e;}
@@ -144,10 +144,10 @@ html[xmlns] .clearfix{display:block;}
 .metro .metro-sections .metro-section .tile .tile-announce .announce-description .label.label-color-darken{background:#1c1c1c;}.metro .metro-sections .metro-section .tile .tile-announce .announce-description .label.label-color-darken .stick{border-top:10px solid #1c1c1c !important;}
 .metro .metro-sections .metro-section .tile.tile-double{width:310px;}.metro .metro-sections .metro-section .tile.tile-double .tile-icon-large{margin-top:20px;margin-left:107px;}
 .metro .metro-sections .metro-section .tile.tile-double .tile-icon-cover,.metro .metro-sections .metro-section .tile.tile-double .tile-icon-large{width:310px;}
-.metro .metro-sections .metro-section .tile.tile-double-vertical{height:300px;}.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{margin-top:20px;margin-left:107px;}
+.metro .metro-sections .metro-section .tile.tile-double-vertical{height:310px;}.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{margin-top:20px;margin-left:107px;}
 .metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-cover,.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{height:310px;}
 .metro .metro-sections .metro-section .tile.tile-triple-vertical{height:470px;}.metro .metro-sections .metro-section .tile.tile-triple-vertical .tile-icon-large{padding-top:187px;}
-.metro .metro-sections .metro-section .tile.tile-quadro-vertical{height:650px;}.metro .metro-sections .metro-section .tile.tile-quadro-vertical .tile-icon-large{padding-top:267px;}
+.metro .metro-sections .metro-section .tile.tile-quadro-vertical{height:630px;}.metro .metro-sections .metro-section .tile.tile-quadro-vertical .tile-icon-large{padding-top:267px;}
 .metro .metro-sections .metro-section .tile.tile-triple{width:470px;}.metro .metro-sections .metro-section .tile.tile-triple .tile-icon-large{width:470px;}
 .metro .metro-sections .metro-section .tile.tile-quadro{width:630px;}.metro .metro-sections .metro-section .tile.tile-quadro .tile-icon-large{width:630px;}
 .metro .metro-sections .metro-section.size1{width:160px !important;}
