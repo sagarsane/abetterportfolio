@@ -13,12 +13,27 @@ if (!(window.console && console.log)) {
 
 // Place any jQuery/helper plugins in here.
 $(document).ready(function() {
-	$("#scrollableIndex").smoothDivScroll({ 
-		mousewheelScrolling: true,
-		manualContinuousScrolling: false,
-		visibleHotSpotBackgrounds: "always",
-		autoScrollingMode: ""
-	});
+	function projectDataModel(){
+		
+		var self = this;
+		self.projects_info = ko.observableArray();
+		
+		
+		self.get_projects_info = function(){
+			var proj_info;
+			$.getJSON('/project_data', function(data){
+				self.projects_info(data.projects);
+			});
+		}		
+		self.get_projects_info();
+		
+		self.project_about = ko.observableArray();	
+		self.getDetails = function(item){
+			self.project_about(item.about);
+		}
+	}
 	
+	ko.applyBindings(new projectDataModel());	
 });
+
 

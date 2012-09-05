@@ -24,7 +24,7 @@
     	<script src="js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
     	<script src="js/jquery.mousewheel.min.js" type="text/javascript"></script>
     	<script src="js/metroui.js" type="text/javascript"></script>
-    	<script src="js/jquery.smoothdivscroll-1.2-min.js" type="text/javascript"></script>
+    	<script src="js/knockout-2.1.0.js" type="text/javascript"></script>
 	    <script type="text/javascript">
         $(function(){
             $("body").metroUI();
@@ -74,69 +74,24 @@
            					<tr>
            					<td>
 	    	    				<div class="frames clearfix" style="margin-top: 0px; margin-right: 5px; width: auto; height: 90%;">
-									<div class="frame size2" style="margin-right:0px;  overflow:scroll; overflow-x:hidden; width: auto; height: 450px;">	
-        								<h2>Learn more!</h2>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-				        					<span class="title">Diverse Routing Algorithms</span>
-		        							<span class="subtitle">C/Networking</span>
+	    	    					<!-- <h2 style="font-size: 22pt; margin-top: 0px; color: black">Learn more!</h2> -->
+									<div class="frame size2" style="margin-right:0px;  overflow:scroll; overflow-x:hidden; width: auto; height: 450px;" data-bind="foreach: projects_info">	
+        									<a class="metro-command-button default" style="width: 90%;" href="#" data-bind="click: $parent.getDetails">
+				        					<span class="title" data-bind="text: name"></span>
+		        							<span class="subtitle" data-bind="text: technology"></span>
 	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-				        					<span class="title">Reliable Multicast System</span>
-		        							<span class="subtitle">C/UDP/Networking/Client-Server</span>
-	        							</a>
-	        							
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Web-based Mashup</span>
-		        							<span class="subtitle">PHP/JS/APIs</span>
-	        							</a>
-	        							
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Integrity Attestation</span>
-		        							<span class="subtitle">C/Java/Client-Server</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Collaborative Drawing Android App</span>
-		        							<span class="subtitle">Android/Peer-to-Peer</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">OS Projects</span>
-		        							<span class="subtitle">C</span>
-	        							</a>
-        								 <a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Web Based Dashboard</span>
-		        							<span class="subtitle">Security/PHP/MySQL/ActionScript</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">CPLEX Programminp</span>
-		        							<span class="subtitle">C++/ILP Problems</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Elimentary Circuit Algorithms</span>
-		        							<span class="subtitle">C/Networking</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">ChordLT - Consistent Hashing</span>
-		        							<span class="subtitle">C/Distributed/Peer-to-Peer</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Dynamic Visualization Prototype</span>
-		        							<span class="subtitle">LAMP Stack/ActionScript</span>
-	        							</a>
-        								<a class="metro-command-button default" style="width: 90%;" href="#">
-        									<span class="title">Registration and searching tool</span>
-		        							<span class="subtitle">PHP/MySQl/JS/HTML</span>
-	        							</a> <!---->
-		        					</div>	    	    	
+	        						</div>
 	    	    				</div>
 	    	    		</td>
 	    	    		<td>
-           					<div class="metro-scroll-vertical" id="scrollableIndex" style="overflow: hidden; margin-left: 30px; margin-right: 5px">
+           					<div class="metro-scroll-vertical" style="overflow: hidden; margin-left: 30px; margin-right: 5px">
             					<div class="metro-sections" style="margin-top: -50px; margin-right: 20px;">
 	                    			<div class="metro-section size8">
 	                    				<h2 style="font-size: 28pt; margin-top: 40px;">Diverse Routing Algorithms (2012)</h2>
                         				<div class="tile tile-quadro tile-double-vertical bg-color-red">
                             				<div class="tile-text">
 			                          			<h2>What was it about..</h2>
+			                          			<p data-bind="text: project_about"></p>
                             				</div>
                         				</div>
                         				<div class="tile tile-double tile-double-vertical bg-color-purple">

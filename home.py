@@ -2,7 +2,7 @@ import webapp2
 import os
 import jinja2
 import json
-from projects import projects_function
+from projects import projects_function, get_project_data
 #import logging
 #import urllib2
 
@@ -66,13 +66,19 @@ class Projects(Handler):
                     "Integrity Attestation for Web Services Framework (2011)" : "C, Java, Distributed Systems",
                     "Collaborative Drawing Android App (2011)" : "Android/Java",
                     "OS Projects (2010)" : "C, OS",
-                    "Web Based Dashboard for Security Assessment (2009 - 2010)" : "PHP, MySQL, Flex, HTML, XML" 
+                    "Web Based Dashboard for Security Assessment (2009 - 2010)" : "PHP, MySQL, Flex, HTML, XML"  
                     }
         self.write(json.dumps(projects))
+
+class Project_data(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'
+        self.write(json.dumps(get_project_data()))
 
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/home', MainPage), 
                                ('/projects', Projects), 
                                ('/experience', Experience),
                                ('/education', Education),
-                               ('/projects_details', Projects_details)], debug=True)
+                               ('/projects_details', Projects_details),
+                               ('/project_data', Project_data)], debug=True)
