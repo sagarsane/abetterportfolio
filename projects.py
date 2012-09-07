@@ -7,6 +7,7 @@ def get_project_data():
             [
              {
               "name": "Diverse Routing Algorithms (2012)",
+              "category": [ "C",  "Networking"],
               "technology" : "C, Networking",
               "about" : [ 
                          {"pt" : "Implemented two diverse routing algorithms:"},
@@ -21,6 +22,7 @@ def get_project_data():
              },
              {
               "name" : "Reliable Multicast System (2011)",
+              "category": [ "C",  "Networking",  "Distributed"],
               "technology" : "C, UDP, Client-Server, Networking",
               "about" : [ 
                          {"pt" : "Designed and implemented point-to-multipoint Reliable Transfer System"},
@@ -35,6 +37,7 @@ def get_project_data():
               },
              {
               "name" : "Web Based Mashup (2011)",
+              "category": [ "Web Dev"],
               "technology" : "HTML5, JS/jQuery, PHP, APIs",
               "about" : [ 
                          {"pt" : "Implemented a Web-based mashup service for searching online"},
@@ -50,6 +53,7 @@ def get_project_data():
               },
              {
               "name" : "Integrity Attestation (2011)",
+              "category": [ "C",  "Java",  "Distributed"],
               "technology" : "C, Java, Distributed Systems",
               "about" : [ 
                          {"pt" : "Implemented a system that effectively pin-points malicious nodes in a Web-Services framework"},
@@ -65,6 +69,7 @@ def get_project_data():
               },
              {
               "name" : "Collaborative Drawing Android App (2011)",
+              "category": [ "Android",  "Distributed"],
               "technology" : "Android, Peer-to-peer",
               "about" : [ 
                          {"pt" : "Developed a multi-user collaborative drawing app in android"},
@@ -79,6 +84,7 @@ def get_project_data():
              {
               "name" : "OS Projects (2010)",
               "technology" : "C",
+              "category": [ "C",  "OS"],
               "about" : [ 
                          {"pt" : "Implemented following projects in C -"},
                          {"pt" : "Virtual Memory and Demand Paging"},
@@ -92,6 +98,7 @@ def get_project_data():
               },
              {
               "name" : "Web Based Dashboard (2009-2010)",
+              "category": [ "Web Dev"],
               "technology" : "PHP, MySQL, Flex, HTML, XML",
               "about" : [ 
                          {"pt" : "Implemented an abstract interface for security assessment of a network or web application"},
@@ -108,6 +115,7 @@ def get_project_data():
               },
              {
               "name" : "CPLEX Programming (2012)",
+              "category": [ "C++",  "CPLEX"],
               "technology" : "C++, ILP Problems",
               "about" : [ 
                          {"pt" : "Developed CPLX Programs for solving ILP Problems"},
@@ -121,6 +129,7 @@ def get_project_data():
               },
              {
               "name" : "ChordLT - Distributed Hashing (2011)",
+              "category": [ "C",  "Distributed"],
               "technology" : "C, Peer-to-peer",
               "about" : [ 
                          {"pt" : "Implemented a light version of Chord Distributed Hash table system using TCP"},
@@ -135,6 +144,7 @@ def get_project_data():
               },
              {
               "name" : "Dynamic Visualization Prototype (2011)",
+              "category": [ "Web Dev"],
               "technology" : "LAMP Stack, ActionScript",
               "about" : [ 
                          {"pt" : "Developed and maintained a client-server and flash based dynamic visualization prototype for a specific use case"},
@@ -148,6 +158,7 @@ def get_project_data():
               },
              {
               "name" : "Student Registration and Searching Tool (2010-2011)",
+              "category": [ "Web Dev"],
               "technology" : "PHP, MySQL, HTML",
               "about" : [ 
                          {"pt" : "Implemented a simple student registration system in HTML, PHP and MySQL as a part of a project for a department on campus"},
@@ -161,6 +172,7 @@ def get_project_data():
               },
              {
               "name" : "Elementary Circuit Algorithms (2012)",
+              "category": [ "C",  "Networking"],
               "technology" : "C, Networking",
               "about" : [ 
                          {"pt" : "Implementation of Elementary Circuit Algorithms, viz., Tiernan's, Tarjan's and Johnson's algorithms to enumerate all simple cycles in a network"},

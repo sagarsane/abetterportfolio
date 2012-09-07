@@ -65,7 +65,15 @@
             <div class="layout">
         		<div class="header" id="header">
 	            	<div class="user-login">
-	                	<div class="name">
+	            		<div id="name_bubble" class="metro-replies" style="float: left; opacity: 0.8">
+	            			<div class="metro-reply bg-color-green">
+		            			<b class="sticker sticker-right sticker-color-green"></b>
+	            				<div class="text">
+		            				Hover at the bottom of the screen to filter projects by different categories!
+	            				</div>
+	            			</div>
+	            		</div>
+	                	<div id="name"  class="name">
 	                    	<span class="first-name">Sagar</span>
                     		<span class="last-name">Sane</span>
                 		</div>
@@ -128,6 +136,18 @@
              			</tr>
              		</tbody>
              		</table> 
+            	</div>
+            	<div id="wrapper" class="info text-center">
+            		<div id="project_filters" class="bg-color-red">
+            			<h3 style="float: left; margin: 0px;">Filters categories: </h3>
+            			<form class="metro-form" data-bind="foreach: project_categories" style="margin-top: 7px;">
+            				<label class="metro-check" style="border: 1px solid white; padding-bottom: 5px; padding-top: 2px; padding-left: 2px; padding-right: 2px;">
+	            				<input type="checkbox" data-bind="attr: {value: tag}, event: {change: $root.filter_projectList}">
+            					<span><strong data-bind="text: tag"></strong></span>
+            				</label>
+            				&nbsp;&nbsp;
+            			</form>
+            		</div>
             	</div> 
             </div>
          </div>
