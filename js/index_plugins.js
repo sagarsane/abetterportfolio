@@ -13,6 +13,23 @@ if (!(window.console && console.log)) {
 
 // Place any jQuery/helper plugins in here.
 $(document).ready(function() {
+	
+	var bubbleFlag = 0;
+	//$("#name_bubble").toggle('slow');
+	var fadeBubble = function(){
+		if(bubbleFlag == 1){
+			clearInterval(bubbleOnce);
+			bubbleFlag = 0;
+		}
+		else{
+			bubbleFlag = 1;
+			$("#name_bubble").toggle('slow');
+		}
+	}
+	var bubbleOnce = setInterval(function(){fadeBubble()},4000);
+	
+	
+	
 	var exp_data_arr,edu_data_arr, proj_data_arr;
 	var i_exp = 0, i_edu = 0, i_proj = 0;
 	var exp_data_cnt = 0, edu_data_cnt = 0, proj_data_cnt = 0;
@@ -140,3 +157,6 @@ $(document).ready(function() {
 	
 });
 
+$("#name").hover(function(){
+	$("#name_bubble").toggle('fast');
+});

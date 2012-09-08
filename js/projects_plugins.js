@@ -13,6 +13,7 @@ if (!(window.console && console.log)) {
 
 // Place any jQuery/helper plugins in here.
 $(document).ready(function() {
+	//$("#no_name_bubble").show();
 	var bubbleFlag = 0;
 	//$("#name_bubble").toggle('slow');
 	var fadeBubble = function(){
@@ -32,6 +33,7 @@ $(document).ready(function() {
 	$("#project_repo").hide();
 	$("#project_reco").hide();
 	$("#project_apis").hide();
+	$("#project_name").hide();
 	
 	function projectDataModel(){
 		
@@ -45,7 +47,7 @@ $(document).ready(function() {
 		//this.projects_info.loading = ko.observable(false);
 		
 		self.get_projects_info = function(){
-			
+			self.project_categories.push({tag: "All Projects"});
 			$.getJSON('/project_data', function(data){
 				//project_data = data.projects;
 				project_data = jQuery.extend(true, {}, data.projects);
@@ -61,8 +63,6 @@ $(document).ready(function() {
 					
 				});
 				proj_cat = [];
-				self.project_categories.push({tag: "All Projects"});
-				//self.project_categories(proj_cat);
 			});
 		}
 		
@@ -75,6 +75,7 @@ $(document).ready(function() {
 			$("#project_repo").hide();
 			$("#project_reco").hide();
 			$("#project_apis").hide();
+			$("#project_name").hide();
 			
 			/*****Insert all the detail information **/
 			self.project_about(item.about);
@@ -89,60 +90,63 @@ $(document).ready(function() {
 			$("#project_repo").show();
 			$("#project_reco").show();
 			$("#project_apis").show();
-			
+			//$("#project_name").show();
 		}
 		
-		var exists_in = function(haystack, currentSelections){
+		function exists_in(haystack, currentSelections){
+			var inner_flag = 0;
 			$.each(currentSelections, function(index, entry){
-				if(haystack.indexOf(entry) == -1)
-					return false;
+				if(haystack.indexOf(entry) == -1){
+					inner_flag = 1;
+				}
 			});
-			return true;
+			if(inner_flag == 1)
+				return 0;
+			else
+				return 1;
 		}
 		
 		
-		self.filter_projectList = function(item,event){
+		self.filter_projectList = function(item,event)
+		{
+			var is_all = 0;
 			$("#project_details").hide();
 			$("#project_repo").hide();
 			$("#project_reco").hide();
 			$("#project_apis").hide();
+			$("#project_name").hide();
 
 			if(event.currentTarget.checked == true)
-			{ //if true, add it to current selections
-				self.checkedSelections.push(event.currentTarget.value);
-				if(item.tag == "All Projects"){
-					//Will have to think about this!!
-					self.checkedSelections.remove(item.tag);
+			{ 
+				if(item.tag == "All Projects")
+				{
+					is_all = 1;
 					self.projects_info.removeAll();
 					$.each(project_data, function(index, entry){
 						self.projects_info.push(entry);
 					});
-					//self.projects_info(project_data);
-					//return;
 				}
-				else{
-					//self.checkedSelections.remove(item.tag);
-					self.projects_info.remove(function(entry){
-						return entry.category.indexOf(item.tag) == -1
-					});
+				else
+				{
+					self.checkedSelections.push(event.currentTarget.value);
 				}
 			}
 			else
-			{ 
-		        //Here, remove all elements with current value, keeping elements with all previous values
-		        //from checkedSelections 
+			{
+				if(item.tag == "All Projects"){
+					self.projects_info.removeAll();
+				}
 				self.checkedSelections.remove(item.tag);
-				self.projects_info.remove(function(entry){
-					return entry.category.indexOf(item.tag) != -1
-				});
+			}
+			
+			if(is_all == 0)
+			{
+				self.projects_info.removeAll();
 				$.each(project_data, function(index, entry){
-					//$.each(entry.category, function(ind, val){
-						if(exists_in(entry.category, self.checkedSelections()) == true){
-							self.projects_info.push(entry);
-						}
-					//});
-				});
-
+					if(exists_in(entry.category, self.checkedSelections()) == 1){
+						self.projects_info.push(entry);
+					}
+				});				
 			}
 		}
 		
@@ -151,10 +155,6 @@ $(document).ready(function() {
 	ko.applyBindings(new projectDataModel());	
 });
 
-
-var animateAbout = function(){
-	
-}
 
 $("#name").hover(function(){
 	$("#name_bubble").toggle('fast');
