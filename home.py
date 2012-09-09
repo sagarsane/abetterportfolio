@@ -59,10 +59,10 @@ class Projects(Handler):
                     "Diverse Routing Algorithms (2012)" : "C, Networking",
                     "Reliable Multicast System (2012)" : "C, Networking",
                     "Web Based Mashup (2011)" : "HTML5, JS/AJAX/jQuery, PHP, Open APIs",
-                    "Integrity Attestation for Web Services Framework (2011)" : "C, Java, Distributed Systems",
+                    "Integrity Attestation (2011)" : "C, Java, Distributed Systems",
                     "Collaborative Drawing Android App (2011)" : "Android/Java",
                     "OS Projects (2010)" : "C, OS",
-                    "Web Based Dashboard for Security Assessment (2009 - 2010)" : "PHP, MySQL, Flex, HTML, XML"  
+                    "Web Based Dashboard (2009 - 2010)" : "PHP, MySQL, Flex, HTML, XML"  
                     }
         self.write(json.dumps(projects))
 

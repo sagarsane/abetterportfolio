@@ -1,6 +1,6 @@
 $("#projects_tile").click(function(){
 	$('#wrapper').scrollTo($("#projects"), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>Hover at the bottom of the screen to filter projects by different categories!</p>");
 			$("#name_bubble").toggle("slow");
@@ -15,7 +15,7 @@ $("#projects_tile").click(function(){
 
 $("#experience_tile").click(function(){
 	$('#wrapper').scrollTo($("#experience"), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>Here is the information about my work experience!</p>");
 			$("#name_bubble").toggle("slow");
@@ -30,7 +30,7 @@ $("#experience_tile").click(function(){
 
 $("#education_tile").click(function(){
 	$('#wrapper').scrollTo($("#education"), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>I have Bachelors in IT and Masters in CN(CS)</p>");
 			$("#name_bubble").toggle("slow");
@@ -45,7 +45,7 @@ $("#education_tile").click(function(){
 
 $("#skillset_tile").click(function(){
 	$('#wrapper').scrollTo($("#skills"), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>What I know and what I can do!</p>");
 			$("#name_bubble").toggle("slow");
@@ -60,7 +60,7 @@ $("#skillset_tile").click(function(){
 
 $("#achievements_tile").click(function(){
 	$('#wrapper').scrollTo($("#achievements_hobbies"), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>Somethings worth noting! .. aaand, my hobbies :)</p>");
 			$("#name_bubble").toggle("slow");
@@ -75,7 +75,7 @@ $("#achievements_tile").click(function(){
 
 $("#contact_tile").click(function(){
 	$('#wrapper').scrollTo($("#contact"), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>My footprint on the big bad WWW!</p>");
 			$("#name_bubble").toggle("slow");

@@ -33,10 +33,11 @@ function resizePanel() {
 }
 
 
+
 var name_bubble_function = function(bubbleFlag){
 	var fadeBubble = function(){
 		if(bubbleFlag == 1){
-			clearInterval(bubbleOnce);
+			clearTimeout(bubbleOnce);
 			bubbleFlag = 0;
 		}
 		else{
@@ -44,7 +45,94 @@ var name_bubble_function = function(bubbleFlag){
 			$("#name_bubble").toggle('slow');
 		}
 	}
-	var bubbleOnce = setInterval(function(){fadeBubble()},4000);
+	var bubbleOnce = setTimeout(function(){fadeBubble()},7000);
+}
+
+
+function landingPageModel(){
+	var exp_data_arr,edu_data_arr, proj_data_arr;
+	var i_exp = 0, i_edu = 0, i_proj = 0;
+	var exp_data_cnt = 0, edu_data_cnt = 0, proj_data_cnt = 0;
+
+	var self = this;
+	var exp_data = "";
+	var edu_data = "";
+	var proj_data = "";
+	self.experienceContent = ko.observable();
+	self.educationContent = ko.observable();
+	self.projectsContent = ko.observable();
+	
+
+	self.getExperienceContent = function(){
+		$.getJSON('/experience', function(experience){
+			var i = 0;
+			$.each(experience, function(entryIndex, entry) {
+				   exp_data += "<div id='experience_tile_item_" + (i++) + "' class='tile-text experience_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";
+				   $.each(entry, function(i, subentry) { 
+				       exp_data += "<p>" + subentry + "</p>";
+				   }); 
+				   exp_data += "</div>";
+			});
+			self.experienceContent(exp_data);
+			
+			(function change(){
+				var count = parseFloat($("#experience_tile_mask").css('width'))/parseFloat($("#experience_tile_mask").parent().css('width'));
+				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
+				var item_id = '#experience_tile_item_' + random;
+				$('#experience_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });
+				setTimeout(function(){change(exp_data_arr)}, 4000);
+			})();				
+		});
+	}
+
+	self.getProjectsContent = function(){
+		$.getJSON('/projects', function(projects){
+			var i = 0;
+			$.each(projects, function(entryIndex, entry) {
+				   proj_data += "<div id='projects_tile_item_" + (i++) + "' class='tile-text projects_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";				
+				   proj_data += "<p>" + entry + "</p>" + "</div>"; 
+
+			});
+	
+			self.projectsContent(proj_data);
+			
+			(function change(){
+				var count = parseFloat($("#projects_tile_mask").css('width'))/parseFloat($("#projects_tile_mask").parent().css('width'));
+				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
+				var item_id = '#projects_tile_item_' + random;
+				$('#projects_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });				
+				setTimeout(function(){change(proj_data_arr)},5650);
+			})();
+		});
+	}
+
+	self.getEducationContent = function(){
+		$.getJSON('/education', function(education){
+			var i = 0;
+			$.each(education, function(entryIndex, entry) {
+				   edu_data += "<div id='education_tile_item_" + (i++) + "' class='tile-text education_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";
+				   $.each(entry, function(i, subentry) { 
+				       edu_data += "<p>" + subentry + "</p>";
+				   }); 
+				   edu_data += "</div>";
+			});
+	
+			self.educationContent(edu_data);
+			
+			(function change(){
+				var count = parseFloat($("#education_tile_mask").css('width'))/parseFloat($("#education_tile_mask").parent().css('width'));
+				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
+				var item_id = '#education_tile_item_' + random;
+				$('#education_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });								
+				setTimeout(function(){change()},3300);					
+			})(edu_data_arr);
+		});
+	}
+
+	
+	self.getExperienceContent();
+	self.getEducationContent();
+	self.getProjectsContent();
 }
 
 
@@ -179,7 +267,7 @@ $("#back_button").click(function() {
 	var goTo = "#" + goTo;
 	  
 	$('#wrapper').scrollTo($(''+goTo), 1600, {
-		easing: 'easeOutElastic',
+		easing: 'swing',
 		onAfter: function(){
 			$("#back_button").attr("data-href", "");
 			switch(goTo){
@@ -222,102 +310,9 @@ $(document).ready(function() {
 	});
 	
 	
-	var exp_data_arr,edu_data_arr, proj_data_arr;
-	var i_exp = 0, i_edu = 0, i_proj = 0;
-	var exp_data_cnt = 0, edu_data_cnt = 0, proj_data_cnt = 0;
-	function ExperienceModel(){
-		var self = this;
-		var exp_data = "";
-		var edu_data = "";
-		var proj_data = "";
-		//var i = 0;
-		//var exp_data_cnt = 0;
-		self.experienceContent = ko.observable();
-		self.educationContent = ko.observable();
-		self.projectsContent = ko.observable();
-
-		self.getExperienceContent = function(){
-			//self.experienceContent(null);
-			$.getJSON('/experience', function(experience){
-				//exp_data = data;
-				$.each(experience, function(entryIndex, entry) {
-					   exp_data += "<div class='tile-text'><h2>" + entryIndex + "</h2><br/>";
-					    
-					   $.each(entry, function(i, subentry) { 
-					       exp_data += "<p>" + subentry + "</p>";
-					   }); 
-					   exp_data += "</div>";
-				});
-				exp_data_arr = exp_data.split("</div>");
-				exp_data_cnt = exp_data_arr.length-1;
-				self.experienceContent(exp_data_arr[i_exp++] + "</div>");
-				function change(data_arr){
-					if(i_exp >= exp_data_cnt)
-						i_exp = 0;
-					self.experienceContent(exp_data_arr[i_exp++] + "</div>");
-				}
-				setInterval(function(){change(exp_data_arr)},2000);
-				
-				
-			});
-		}
-
-		self.getProjectsContent = function(){
-			
-			$.getJSON('/projects', function(projects){
-				$.each(projects, function(entryIndex, entry) {
-					   proj_data += "<div class='tile-text'><h2>" + entryIndex + "</h2><br/>";
-					   proj_data += "<p>" + entry + "</p>" + "</div>"; 
-
-				});
-		
-				proj_data_arr = proj_data.split("</div>");
-				proj_data_cnt = proj_data_arr.length-1;
-				self.projectsContent(proj_data_arr[i_proj++] + "</div>");
-				function change(data_arr){
-					if(i_proj >= proj_data_cnt)
-						i_proj = 0;
-					self.projectsContent(data_arr[i_proj++] + "</div>");
-				}
-				setInterval(function(){change(proj_data_arr)},2650);
-			});
-		}
-
-		self.getEducationContent = function(){
-			//self.experienceContent(null);
-			$.getJSON('/education', function(education){
-				//edu_data = data;
-				$.each(education, function(entryIndex, entry) {
-					   edu_data += "<div class='tile-text'><h2>" + entryIndex + "</h2><br/>";
-					    
-					   $.each(entry, function(i, subentry) { 
-					       edu_data += "<p>" + subentry + "</p>";
-					   }); 
-					   edu_data += "</div>";
-				});
-		
-				edu_data_arr = edu_data.split("</div>");
-				edu_data_cnt = edu_data_arr.length-1;
-				self.educationContent(edu_data_arr[i_edu++] + "</div>");
-				function change(data_arr){
-					if(i_edu >= edu_data_cnt)
-						i_edu = 0;
-					self.educationContent(data_arr[i_edu++] + "</div>");
-				}
-				setInterval(function(){change(edu_data_arr)},2300);
-				
-				
-			});
-		}
-
-		
-		self.getExperienceContent();
-		self.getEducationContent();
-		self.getProjectsContent();
-	}
 	
 	ko.applyBindings(new projectDataModel(), document.getElementById("projects"));
-	ko.applyBindings(new ExperienceModel(), document.getElementById("about"));
+	ko.applyBindings(new landingPageModel(), document.getElementById("about"));
 	
 	/*$("#scrollableIndex").smoothDivScroll({ 
 		mousewheelScrolling: true,
