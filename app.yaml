@@ -21,6 +21,9 @@ handlers:
 - url: /
   script: home.app
 
+- url: /test_home
+  script: home.app
+
 - url: /home
   script: home.app
 
@@ -31,9 +34,6 @@ handlers:
   script: home.app
 
 - url: /education
-  script: home.app
-
-- url: /projects_details
   script: home.app
 
 - url: /project_data

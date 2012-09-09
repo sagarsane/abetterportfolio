@@ -1,6 +1,3 @@
-def projects_function():
-    return "projects.html"
-
 def get_project_data():
     data = {
             "projects" : 

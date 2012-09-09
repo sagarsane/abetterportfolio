@@ -1,17 +1,18 @@
 Initializing the project.
-A better portfolio - For Developers/Programmers.
+A better portfolio - For Developers/Programmers. (Current, a prototype for web application for my own portfolio. Will extend it to a framework once basic setup is done!)
 
 The aim of the project:
   - Build a portfolio tailored for a developer (a personal project at first)
   - Eventually, the idea is to have a framework setup for creating/customizing portfolios specifically tailored for
 developers/programmers.
 
-Feature Set:
-More to come...
+Currently, I am working on this project as a Portfolio for myself. I am using all the libraries and AppEngine mentioned below, so that I can setup the basic framework. To make it a customizable portfolio builting framework will be better once I have this!
+
 
 Plugins/Libraries used:
 - Metro-UI-CSS (https://github.com/olton/Metro-UI-CSS)
 - SmoothDivScroll (https://github.com/tkahn/Smooth-Div-Scroll)
 - KnockoutJS (https://github.com/SteveSanderson/knockout)
+- jQuery.ScrollTo (https://github.com/flesler/jquery.scrollTo)
 
 Running on Google AppEngine - Python

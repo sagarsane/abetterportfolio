@@ -2,7 +2,7 @@ import webapp2
 import os
 import jinja2
 import json
-from projects import projects_function, get_project_data
+from projects import get_project_data
 #import logging
 #import urllib2
 
@@ -29,10 +29,6 @@ class Handler(webapp2.RequestHandler):
 class MainPage(Handler):
     def get(self):
         self.render_front("index.html")
-
-class Projects_details(Handler):
-    def get(self):
-        self.render_front(projects_function())
 
 class Experience(Handler):
     def get(self):
@@ -75,10 +71,14 @@ class Project_data(Handler):
         self.response.headers['Content-Type'] = 'application/json'
         self.write(json.dumps(get_project_data()))
 
+class TestPage(Handler):
+    def get(self):
+        self.render_front("onePageTest.html")
+        
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/home', MainPage), 
+                               ('/test_home', TestPage),                               
                                ('/projects', Projects), 
                                ('/experience', Experience),
                                ('/education', Education),
-                               ('/projects_details', Projects_details),
                                ('/project_data', Project_data)], debug=True)
