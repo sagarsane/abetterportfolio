@@ -50,7 +50,7 @@ $("#skillset_tile").click(function(){
 			$("#name_bubble_text").html("<p>What I know and what I can do!</p>");
 			$("#name_bubble").toggle("slow");
 			name_bubble_function(0);
-			$("#header_text").html("Skills");
+			$("#header_text").html("Social Activity Feed");
 			$("#back_button").show();
 			$("#back_button").attr("data-href", "about");
 			$("#back_button").attr("data-current", "skills");
