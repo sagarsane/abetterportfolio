@@ -13,9 +13,9 @@
     	<meta name="keywords" content="A Better Portfolio, revamped!">
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
         <link href="css/smoothDivScroll.css" rel="stylesheet">
         <link href="css/metro.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
     	<link href="css/start.less" rel="stylesheet/less" type="text/css" >
     	<link href="css/representative.css" rel="stylesheet" media="all">
 
@@ -81,11 +81,11 @@
                        			</div>	
                         	</div>
                     		<div class="metro-section size4">
-	                    		<h2>Skills, Achievements/Hobbies, Contact</h2>
+	                    		<h2>Social Activity, Achievements/Hobbies, Contact</h2>
                         		<div id="skillset_tile" class="tile tile-triple bg-color-greenDark">
                            			<div class="tile-text">
-		                                <h2>Skillset</h2>
-                               			<p>Dynamic skillset Content</p>
+		                                <h2>Social Activity Feed</h2>
+                               			<p>Dynamic Social Activity (Pulled from GitHub for now)</p>
                            			</div>
                        			</div>
                         		<div id="achievements_tile" class="tile tile-triple bg-color-green">
@@ -109,7 +109,7 @@
 		</div> 
 		<div id="experience" class="item">
 			<div class="metro" style="height: 100%;">
-            <div class="layout">
+            <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
            			<div class="metro-sections" style="margin-top: -50px; width: 2240px; ">
 	                   	<div class="metro-section size3">
@@ -126,60 +126,60 @@
 		</div>		
 		<div id="projects" class="item">
 			<div class="metro" style="height: 100%;">
-            <div class="layout">
+            <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
            			<table style="margin-top: -60px; height: 100%;">
            				<tbody>
-           					<tr>
-           					<td>
+           				<tr>
+           					<td  style="width: 70px">
 	    	    				<div class="frames clearfix" style="margin-top: 0px; margin-right: 5px; width: auto; height: 90%;">
-	    	    					<!-- <h2 style="font-size: 22pt; margin-top: 0px; color: black">Learn more!</h2> -->
-	    	    					
 									<div id="projects_buttons" class="frame size2" style="margin-right:0px;  overflow:scroll; overflow-x:hidden; width: auto; height: 450px;" data-bind="foreach: projects_info">
 											<!-- <div style="background-image: url(img/loading.gif);" data-bind="visible: projects_info.loading"></div>  -->
-        									<a class="metro-command-button default" style="width: 90%;" href="#" data-bind="click: $parent.getDetails">
+        								<a class="metro-command-button default" style="width: 90%;" href="#" data-bind="click: $parent.getDetails">
 				        					<span class="title" data-bind="text: name"></span>
 		        							<span class="subtitle" data-bind="text: technology"></span>
 	        							</a>
 	        						</div>
-	        						
 	    	    				</div>
-	    	    		</td>
-	    	    		<td>
-	    	    						    	    		
-           					<div class="metro-scroll-vertical" style="overflow: hidden; margin-left: 30px; margin-right: 5px">
-            					<div class="metro-sections" style="margin-top: -50px; margin-right: 20px;">
-	                    			<div class="metro-section size8">
-	                    				<h2 id="project_name" style="font-size: 28pt; margin-top: 40px;" data-bind="text: project_name"></h2>
-                        				<div id="project_details" class="tile tile-quadro tile-double-vertical bg-color-red">
-                            				<div id="sub_project_details" class="tile-text">
-                            					<h2>Details..</h2>
-                            					<ul data-bind="foreach: project_about">
-			                          				<li data-bind="text: pt"></li>
-			                          			</ul>
-                            				</div>
-                        				</div>
-                        				<div id="project_repo" class="tile tile-double tile-double-vertical bg-color-purple">
-                            				<div class="tile-text">
-			                          			<h2>GitHub Repo..</h2>
-                            				</div>
-                        				</div>
-	                    				<div id="project_reco" class="tile tile-quadro bg-color-yellow">
-                            				<div class="tile-text">
-			                          			<h2>Linkedin/Recommendations..</h2>
-                            			</div>
-                        				</div>
-	                    				<div id="project_apis" class="tile tile-double bg-color-blue">
-                            				<div class="tile-text">
-			                          			<h2>API/Other related Examples..</h2>
-                            				</div>
-                        				</div>                      
-	                    			</div> 	                    	
+	    	    			</td>
+	    	    			<td style="width: 1000px">
+           						<div class="metro-scroll-vertical" style="overflow: hidden; margin-left: 30px; margin-right: 5px; width: auto;;"> 
+            						<div class="metro-sections" style="margin-top: 0; margin-right: 0; height: 100%; position: absolute;">
+            							<div id="projects_detail_wrapper" style="width: 950px;"> 
+                           					<div id="projects_detail_mask" class="tile-text" style="margin-right: 10px;" data-bind="foreach: projects_info">
+                           						<div class="metro-section size8 projects_detail_item" style="height: auto; margin-right: 0;" data-bind="attr: {id: id}">
+	                    							<h2 id="project_name" style="font-size: 28pt; margin: 0;" data-bind="text: name"></h2>
+                        							<div id="project_details" class="tile tile-quadro tile-double-vertical bg-color-red">
+	                            						<div id="sub_project_details" class="tile-text">
+                            								<h2>Details..</h2>
+                            								<ul data-bind="foreach: about">
+				                          						<li data-bind="text: pt"></li>
+			                          						</ul>
+                            							</div>
+                        							</div>
+                        							<div id="project_repo" class="tile tile-double tile-double-vertical bg-color-purple">
+                            							<div class="tile-text">
+				                          					<h2>GitHub Repo..</h2>
+                            							</div>
+                        							</div>
+	                    							<div id="project_reco" class="tile tile-quadro bg-color-yellow">
+	                            						<div class="tile-text">
+			                          						<h2>Linkedin/Recommendations..</h2>
+                            							</div>
+                        							</div>
+	                    							<div id="project_apis" class="tile tile-double bg-color-blue">
+	                            						<div class="tile-text">
+				                          					<h2>API/Other related Examples..</h2>
+        	                    						</div>
+            	            						</div>                      
+	            	        					</div>
+                           					</div>
+                           				</div> 	                    	
+             						</div> 
              					</div> 
-             				</div> 
-             			</td>
+             				</td>
              			</tr>
-             		</tbody>
+             			</tbody>
              		</table> 
             	</div>
             	<div id="filters_wrapper" class="info text-center">
@@ -199,7 +199,7 @@
 		</div>
 		<div id="education" class="item">
 			<div class="metro" style="height: 100%;">
-            <div class="layout">
+            <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
     	       		<div class="metro-sections" style="margin-top: -50px; width: 2240px; ">
 	    	           	<div class="metro-section size3">
@@ -216,11 +216,11 @@
 		</div>		
 		<div id="skills" class="item">
 			<div class="metro" style="height: 100%;">
-            <div class="layout">
+            <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
     	       		<div class="metro-sections" style="margin-top: -50px; width: 2240px; ">
 	    	           	<div class="metro-section size3">
-	        	       		<h2>Skills</h2>
+	        	       		<h2>Social Activity Feed</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
                       			<div class="tile-text"  data-bind="html: experienceContent">
                     			</div>
@@ -233,7 +233,7 @@
 		</div>		
 		<div id="achievements_hobbies" class="item">
 			<div class="metro" style="height: 100%;">
-            <div class="layout">
+            <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
     	       		<div class="metro-sections" style="margin-top: -50px; width: 2240px; ">
 	    	           	<div class="metro-section size3">
@@ -257,7 +257,7 @@
 		</div>		
 		<div id="contact" class="item">
 			<div class="metro" style="height: 100%;">
-            <div class="layout">
+            <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
     	       		<div class="metro-sections" style="margin-top: -50px; width: 2240px; ">
 	    	           	<div class="metro-section size3">

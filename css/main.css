@@ -151,9 +151,15 @@ body {
 	/*background-color: #eee;*/
 }
 
+.item {
+	width: 14.28%;
+	height: 100%;
+	float: left;
+}
+
 
 #experience_tile_wrapper{
-	width: auto%;
+	width: auto;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -176,7 +182,7 @@ body {
 }
 
 #education_tile_wrapper{
-	width: auto%;
+	width: auto;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -200,7 +206,7 @@ body {
 
 
 #projects_tile_wrapper{
-	width: auto%;
+	width: auto;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -222,12 +228,29 @@ body {
 	float: left;
 }
 
+#projects_detail_wrapper{
+	width: auto;
+	height: 100%;
+	/*top: 0;
+	left: 0;
+	margin-left: 70px;*/
+	position: absolute;
+	overflow: hidden;	
+}
 
-.item {
-	width: 14.28%;
+#projects_detail_mask{
+	margin-left: 0;
+	margin-top: 0;
+	width: 1230%;
+	height: 100%;
+}
+
+.projects_detail_item{
+	width: 8.33%;
 	height: 100%;
 	float: left;
 }
+
 
 .content {
 	width: 100%;

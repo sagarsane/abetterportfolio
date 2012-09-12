@@ -3,6 +3,7 @@ def get_project_data():
             "projects" : 
             [
              {
+              "id" : "1",
               "name": "Diverse Routing Algorithms (2012)",
               "category": [ "C",  "Networking"],
               "technology" : "C, Networking",
@@ -18,6 +19,7 @@ def get_project_data():
               "apis" : "<apis>"
              },
              {
+              "id" : "2",
               "name" : "Reliable Multicast System (2011)",
               "category": [ "C",  "Networking",  "Distributed"],
               "technology" : "C, UDP, Client-Server, Networking",
@@ -33,6 +35,7 @@ def get_project_data():
               "apis" : "<apis>" 
               },
              {
+              "id" : "3",
               "name" : "Web Based Mashup (2011)",
               "category": [ "Web Dev"],
               "technology" : "HTML5, JS/jQuery, PHP, APIs",
@@ -49,6 +52,7 @@ def get_project_data():
               
               },
              {
+              "id" : "4",
               "name" : "Integrity Attestation (2011)",
               "category": [ "C",  "Java",  "Distributed"],
               "technology" : "C, Java, Distributed Systems",
@@ -65,6 +69,7 @@ def get_project_data():
               
               },
              {
+              "id" : "5",
               "name" : "Collaborative Drawing Android App (2011)",
               "category": [ "Android",  "Distributed"],
               "technology" : "Android, Peer-to-peer",
@@ -79,6 +84,7 @@ def get_project_data():
               
               },
              {
+              "id" : "6",
               "name" : "OS Projects (2010)",
               "technology" : "C",
               "category": [ "C",  "OS"],
@@ -94,6 +100,7 @@ def get_project_data():
               
               },
              {
+              "id" : "7",
               "name" : "Web Based Dashboard (2009-2010)",
               "category": [ "Web Dev"],
               "technology" : "PHP, MySQL, Flex, HTML, XML",
@@ -111,6 +118,7 @@ def get_project_data():
               
               },
              {
+              "id" : "8",
               "name" : "CPLEX Programming (2012)",
               "category": [ "C++",  "CPLEX"],
               "technology" : "C++, ILP Problems",
@@ -125,6 +133,7 @@ def get_project_data():
               
               },
              {
+              "id" : "9",
               "name" : "ChordLT - Distributed Hashing (2011)",
               "category": [ "C",  "Distributed"],
               "technology" : "C, Peer-to-peer",
@@ -140,6 +149,7 @@ def get_project_data():
               
               },
              {
+              "id" : "10",
               "name" : "Dynamic Visualization Prototype (2011)",
               "category": [ "Web Dev"],
               "technology" : "LAMP Stack, ActionScript",
@@ -154,6 +164,7 @@ def get_project_data():
               
               },
              {
+              "id" : "11",
               "name" : "Student Registration and Searching Tool (2010-2011)",
               "category": [ "Web Dev"],
               "technology" : "PHP, MySQL, HTML",
@@ -168,6 +179,7 @@ def get_project_data():
               
               },
              {
+              "id" : "12",
               "name" : "Elementary Circuit Algorithms (2012)",
               "category": [ "C",  "Networking"],
               "technology" : "C, Networking",

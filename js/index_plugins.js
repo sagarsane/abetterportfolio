@@ -153,6 +153,7 @@ function projectDataModel(){
 			//project_data = data.projects;
 			project_data = jQuery.extend(true, {}, data.projects);
 			self.projects_info(data.projects);
+			$("#project_detail_wrapper").hide();
 			var proj_cat = [];
 			$.each(data.projects, function(index, entry){
 				$.each(entry.category, function(ind, val){
@@ -169,19 +170,19 @@ function projectDataModel(){
 	
 	self.get_projects_info();
 	self.checkedSelections = ko.observableArray();
-	self.project_about = ko.observableArray();
-	self.project_name = ko.observableArray();
-	self.getDetails = function(item){
+	//self.project_about = ko.observableArray();
+	//self.project_name = ko.observableArray();
+	/*self.getDetails = function(item){
 		$("#project_details").hide();
 		$("#project_repo").hide();
 		$("#project_reco").hide();
 		$("#project_apis").hide();
 		$("#project_name").hide();
 		
-		/*****Insert all the detail information **/
+		//Insert all the detail information
 		self.project_about(item.about);
 		self.project_name(item.name);
-		/****************************************/
+		//
 		$("#project_name")
 			.hide()
 			.slideDown('slow');
@@ -192,7 +193,14 @@ function projectDataModel(){
 		$("#project_reco").show();
 		$("#project_apis").show();
 		//$("#project_name").show();
+	}*/
+	
+	self.getDetails = function(item){
+		var itemId = "#" + item.id;
+		$("#project_detail_wrapper").toggle();
+		$('#projects_detail_wrapper').scrollTo($("" + itemId), 1600, {easing: 'swing'});
 	}
+	
 	
 	function exists_in(haystack, currentSelections){
 		var inner_flag = 0;
@@ -211,11 +219,11 @@ function projectDataModel(){
 	self.filter_projectList = function(item,event)
 	{
 		var is_all = 0;
-		$("#project_details").hide();
-		$("#project_repo").hide();
-		$("#project_reco").hide();
-		$("#project_apis").hide();
-		$("#project_name").hide();
+		$("#project_detail_wrapper").hide();
+		//$("#project_repo").hide();
+		//$("#project_reco").hide();
+		//$("#project_apis").hide();
+		//$("#project_name").hide();
 
 		if(event.currentTarget.checked == true)
 		{ 
@@ -298,11 +306,11 @@ $(document).ready(function() {
 	$("#back_button").hide();
 	$("#back_button").removeAttr("href");
 	
-	$("#project_details").hide();
-	$("#project_repo").hide();
-	$("#project_reco").hide();
-	$("#project_apis").hide();
-	$("#project_name").hide();
+	//$("#project_details").hide();
+	//$("#project_repo").hide();
+	//$("#project_reco").hide();
+	//$("#project_apis").hide();
+	//$("#project_name").hide();
 		
 	
 	$(window).resize(function() {
