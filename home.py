@@ -3,6 +3,7 @@ import os
 import jinja2
 import json
 from projects import get_project_data
+
 #import logging
 #import urllib2
 
