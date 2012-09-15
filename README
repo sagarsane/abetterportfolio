@@ -15,5 +15,6 @@ Plugins/Libraries used:
 - SmoothDivScroll (https://github.com/tkahn/Smooth-Div-Scroll)
 - KnockoutJS (https://github.com/SteveSanderson/knockout)
 - jQuery.ScrollTo (https://github.com/flesler/jquery.scrollTo)
+- PyGithub (https://github.com/jacquev6/PyGithub)
 
 Running on Google AppEngine - Python
