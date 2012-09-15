@@ -205,6 +205,32 @@ body {
 }
 
 
+
+#activity_tile_wrapper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+#activity_tile_mask {
+	width: 2500%;
+	height: 100%;
+}
+
+.activity_tile_item {
+	width: 4%;
+	height: 100%;
+	float: left;
+}
+
+
+
+
+
 #projects_tile_wrapper{
 	width: auto;
 	height: 100%;
@@ -250,6 +276,7 @@ body {
 	height: 100%;
 	float: left;
 }
+
 
 
 .content {

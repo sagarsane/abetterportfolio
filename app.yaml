@@ -39,6 +39,9 @@ handlers:
 - url: /project_data
   script: home.app
 
+- url: /github_activity
+  script: home.app
+ 
 - url: /.*
   static_files: allhtml/404.html
   upload: allhtml/404.html

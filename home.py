@@ -3,7 +3,7 @@ import os
 import jinja2
 import json
 from projects import get_project_data
-
+from GitHubActivityUtil import *
 #import logging
 #import urllib2
 
@@ -75,11 +75,24 @@ class Project_data(Handler):
 class TestPage(Handler):
     def get(self):
         self.render_front("onePageTest.html")
-        
+
+class GithubActivity(Handler):
+    def get(self):
+        activity = {}
+        entries = []
+        user = setUser("<user>", "<password>")
+        entries = entries + getFollowers(user)
+        entries = entries + getFollowing(user)
+        entries = entries + getWatchedRepos(user)
+        activity['activities'] = entries
+        self.response.headers['Content-Type'] = 'application/json'
+        self.write(json.dumps(activity))
+          
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/home', MainPage), 
                                ('/test_home', TestPage),                               
                                ('/projects', Projects), 
                                ('/experience', Experience),
                                ('/education', Education),
-                               ('/project_data', Project_data)], debug=True)
+                               ('/project_data', Project_data),
+                               ('/github_activity', GithubActivity)], debug=True)

@@ -43,8 +43,8 @@ $("#education_tile").click(function(){
 	});
 });
 
-$("#skillset_tile").click(function(){
-	$('#wrapper').scrollTo($("#skills"), 1600, {
+$("#activities_tile").click(function(){
+	$('#wrapper').scrollTo($("#activities"), 1600, {
 		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>What I know and what I can do!</p>");

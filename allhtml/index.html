@@ -82,11 +82,20 @@
                         	</div>
                     		<div class="metro-section size4">
 	                    		<h2>Social Activity, Achievements/Hobbies, Contact</h2>
-                        		<div id="skillset_tile" class="tile tile-triple bg-color-greenDark">
-                           			<div class="tile-text">
-		                                <h2>Social Activity Feed</h2>
-                               			<p>Dynamic Social Activity (Pulled from GitHub for now)</p>
-                           			</div>
+                        		<div id="activities_tile" class="tile tile-triple bg-color-blueLight">
+                        			<div id="activity_tile_wrapper">
+                           				<div id="activity_tile_mask" data-bind="foreach: githubActivities">
+                           					<div class="tile-announce activity_tile_item" data-bind="attr: {id: id}">
+                           						<div class="tile-text announce-content">
+				                                	<h2 data-bind="text: name"></h2>
+    	                       					</div>
+        	                   					<div class="announce-description" style="height: auto;">
+        	                   						<div class="label label-color-red" data-bind="text: type"></div>
+            	                    				<div class="text">URL To the Repo/Commit/Comment HERE!</div>
+                	            				</div>
+                            				</div>
+                           				</div>
+                           			</div>                            		
                        			</div>
                         		<div id="achievements_tile" class="tile tile-triple bg-color-green">
                            			<div class="tile-text">
@@ -115,7 +124,7 @@
 	                   	<div class="metro-section size3">
 	                   		<h2>Experiences</h2>
                        		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                       			<div class="tile-text"  data-bind="html: experienceContent">
+                       			<div class="tile-text"  data-bind="">
                        			</div>
                     		</div>
                        	</div>
@@ -134,7 +143,6 @@
            					<td  style="width: 70px" valign="top">
 	    	    				<div class="frames clearfix" style="margin-top: 0px; margin-right: 5px; width: auto; height: 90%;">
 									<div id="projects_buttons" class="frame size2" style="margin-right:0px;  overflow:scroll; overflow-x:hidden; width: auto; height: 500px;" data-bind="foreach: projects_info">
-											<!-- <div style="background-image: url(img/loading.gif);" data-bind="visible: projects_info.loading"></div>  -->
         								<a class="metro-command-button default" style="width: 90%;" href="#" data-bind="click: $parent.getDetails">
 				        					<span class="title" data-bind="text: name"></span>
 		        							<span class="subtitle" data-bind="text: technology"></span>
@@ -205,7 +213,7 @@
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Education</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="html: experienceContent">
+                      			<div class="tile-text"  data-bind="">
                     			</div>
                     		</div>
                     	</div>
@@ -214,7 +222,7 @@
 			</div>
 			</div>		
 		</div>		
-		<div id="skills" class="item">
+		<div id="activities" class="item">
 			<div class="metro" style="height: 100%;">
             <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
@@ -222,7 +230,7 @@
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Social Activity Feed</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="html: experienceContent">
+                      			<div class="tile-text"  data-bind="">
                     			</div>
                     		</div>
                     	</div>
@@ -239,14 +247,14 @@
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Achievements</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="html: experienceContent">
+                      			<div class="tile-text"  data-bind="">
                     			</div>
                     		</div>
                     	</div>
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Hobbies</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-blueDark">
-                      			<div class="tile-text"  data-bind="html: experienceContent">
+                      			<div class="tile-text"  data-bind="">
                     			</div>
                     		</div>
                     	</div>                    	
@@ -263,14 +271,14 @@
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Contact</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="html: experienceContent">
+                      			<div class="tile-text"  data-bind="">
                     			</div>
                     		</div>
                     	</div>
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Social</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-pinkDark">
-                      			<div class="tile-text"  data-bind="html: experienceContent">
+                      			<div class="tile-text"  data-bind="">
                     			</div>
                     		</div>
                     	</div>                    	

@@ -1,4 +1,3 @@
-// Avoid `console` errors in browsers that lack a console.
 if (!(window.console && console.log)) {
     (function() {
         var noop = function() {};
@@ -61,7 +60,7 @@ function landingPageModel(){
 	self.experienceContent = ko.observable();
 	self.educationContent = ko.observable();
 	self.projectsContent = ko.observable();
-	
+
 
 	self.getExperienceContent = function(){
 		$.getJSON('/experience', function(experience){
@@ -74,7 +73,7 @@ function landingPageModel(){
 				   exp_data += "</div>";
 			});
 			self.experienceContent(exp_data);
-			
+
 			(function change(){
 				var count = parseFloat($("#experience_tile_mask").css('width'))/parseFloat($("#experience_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
@@ -93,9 +92,9 @@ function landingPageModel(){
 				   proj_data += "<p>" + entry + "</p>" + "</div>"; 
 
 			});
-	
+
 			self.projectsContent(proj_data);
-			
+
 			(function change(){
 				var count = parseFloat($("#projects_tile_mask").css('width'))/parseFloat($("#projects_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
@@ -116,9 +115,9 @@ function landingPageModel(){
 				   }); 
 				   edu_data += "</div>";
 			});
-	
+
 			self.educationContent(edu_data);
-			
+
 			(function change(){
 				var count = parseFloat($("#education_tile_mask").css('width'))/parseFloat($("#education_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
@@ -129,24 +128,48 @@ function landingPageModel(){
 		});
 	}
 
+	self.githubActivities = ko.observableArray();
+	self.get_github_activities = function()
+	{
+		$.getJSON('/github_activity', function(data)
+		{
+			var i = 0;
+			var entries = data.activities;
+			$.each(entries, function(index, entry){
+				entries[index].id="activity_tile_item_" + (i++);
+			});
+			self.githubActivities(entries);
+			
+			(function change(){
+				var count = parseFloat($("#activity_tile_mask").css('width'))/parseFloat($("#activity_tile_mask").parent().css('width'));
+				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
+				var item_id = '#activity_tile_item_' + random;
+				$('#activity_tile_wrapper').scrollTo($(item_id+""), 4000, {	easing: 'swing' });				
+				setTimeout(function(){change()},4870);
+			})();			
+			
+			
+		});
+	}
 	
 	self.getExperienceContent();
 	self.getEducationContent();
 	self.getProjectsContent();
+	self.get_github_activities();
 }
 
 
 function projectDataModel(){
-	
+
 	var self = this;
 	var project_data;
 	var currentSelections;
 	//self.checkBox = ko.observable(false);
 	self.projects_info = ko.observableArray();
 	self.project_categories = ko.observableArray();
-	
+
 	//this.projects_info.loading = ko.observable(false);
-	
+
 	self.get_projects_info = function(){
 		self.project_categories.push({tag: "All Projects"});
 		$.getJSON('/project_data', function(data){
@@ -162,12 +185,12 @@ function projectDataModel(){
 						self.project_categories.push({tag : val});
 					}
 				})
-				
+
 			});
 			proj_cat = [];
 		});
 	}
-	
+
 	self.get_projects_info();
 	self.checkedSelections = ko.observableArray();
 	//self.project_about = ko.observableArray();
@@ -194,14 +217,14 @@ function projectDataModel(){
 		$("#project_apis").show();
 		//$("#project_name").show();
 	}*/
-	
+
 	self.getDetails = function(item){
 		var itemId = "#" + item.id;
 		$("#project_detail_wrapper").toggle();
 		$('#projects_detail_wrapper').scrollTo($("" + itemId), 1600, {easing: 'swing'});
 	}
-	
-	
+
+
 	function exists_in(haystack, currentSelections){
 		var inner_flag = 0;
 		$.each(currentSelections, function(index, entry){
@@ -214,8 +237,8 @@ function projectDataModel(){
 		else
 			return 1;
 	}
-	
-	
+
+
 	self.filter_projectList = function(item,event)
 	{
 		var is_all = 0;
@@ -247,7 +270,7 @@ function projectDataModel(){
 			}
 			self.checkedSelections.remove(item.tag);
 		}
-		
+
 		if(is_all == 0)
 		{
 			self.projects_info.removeAll();
@@ -258,7 +281,7 @@ function projectDataModel(){
 			});				
 		}
 	}
-	
+
 }
 
 
@@ -273,7 +296,7 @@ $("#back_button").click(function() {
 	if(goTo == "")
 		return false;
 	var goTo = "#" + goTo;
-	  
+
 	$('#wrapper').scrollTo($(''+goTo), 1600, {
 		easing: 'swing',
 		onAfter: function(){
@@ -286,7 +309,7 @@ $("#back_button").click(function() {
 						  name_bubble_function(0);
 						break;
 			}
-			
+
 		}
 	});
 
@@ -301,27 +324,27 @@ $("#back_button").click(function() {
 
 
 $(document).ready(function() {
-	
+
 	name_bubble_function(0);
 	$("#back_button").hide();
 	$("#back_button").removeAttr("href");
-	
+
 	//$("#project_details").hide();
 	//$("#project_repo").hide();
 	//$("#project_reco").hide();
 	//$("#project_apis").hide();
 	//$("#project_name").hide();
-		
-	
+
+
 	$(window).resize(function() {
 		resizePanel();
 	});
-	
-	
-	
+
+
+
 	ko.applyBindings(new projectDataModel(), document.getElementById("projects"));
 	ko.applyBindings(new landingPageModel(), document.getElementById("about"));
-	
+
 	/*$("#scrollableIndex").smoothDivScroll({ 
 		mousewheelScrolling: true,
 		manualContinuousScrolling: false,
@@ -339,6 +362,3 @@ $("#filters_wrapper").hover(function(){
 	if($("#back_button").attr('data-current') == "projects")
 		$("#project_filters").slideToggle('fast');
 });
-
-
-/******************************************Projects Details********************************/
