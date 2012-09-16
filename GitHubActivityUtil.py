@@ -13,7 +13,11 @@ def getFollowers(user):
     for f in user.get_followers():
         ret = {}
         ret['type'] = "Followers"
-        ret['name'] = f.login
+        namedUser = Github().get_user(f.login)
+        if namedUser.name: 
+            ret['name'] = namedUser.name + " - (" + f.login + ")"
+        else:
+            ret['name'] = f.login
         ret['url'] = "https://github.com/" + f.login #f.url
         followers.append(ret)
     return followers
@@ -23,7 +27,11 @@ def getFollowing(user):
     for f in user.get_following():
         ret = {}
         ret['type'] = "Following"
-        ret['name'] = f.login
+        namedUser = Github().get_user(f.login)
+        if namedUser.name: 
+            ret['name'] = namedUser.name + " - (" + f.login + ")"
+        else:
+            ret['name'] = f.login
         ret['url'] = "https://github.com/" + f.login #f.url
         following.append(ret)
     return following
@@ -33,7 +41,10 @@ def getWatchedRepos(user):
     for w in user.get_watched():
         ret = {}
         ret['type'] = "Watched"
-        ret['name'] = w.name #+ " - " + w.description
+        ret['name'] = w.name + " - " + w.description
         ret['url'] = w.html_url
         watched.append(ret)
     return watched
+
+#if __name__ == "__main__":
+    

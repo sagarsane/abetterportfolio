@@ -4,6 +4,7 @@ import jinja2
 import json
 from projects import get_project_data
 from GitHubActivityUtil import *
+from google.appengine._internal.django.core.mail.backends import console
 #import logging
 #import urllib2
 
@@ -87,7 +88,7 @@ class GithubActivity(Handler):
         activity['activities'] = entries
         self.response.headers['Content-Type'] = 'application/json'
         self.write(json.dumps(activity))
-          
+                  
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/home', MainPage), 
                                ('/test_home', TestPage),                               

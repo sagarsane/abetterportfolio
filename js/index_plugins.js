@@ -137,6 +137,8 @@ function landingPageModel(){
 			var entries = data.activities;
 			$.each(entries, function(index, entry){
 				entries[index].id="activity_tile_item_" + (i++);
+				if(entries[index].name.length > 40)
+					entries[index].name = entries[index].name.substring(0,40) + "...";
 			});
 			self.githubActivities(entries);
 			
@@ -221,7 +223,7 @@ function projectDataModel(){
 	self.getDetails = function(item){
 		var itemId = "#" + item.id;
 		$("#project_detail_wrapper").toggle();
-		$('#projects_detail_wrapper').scrollTo($("" + itemId), 1600, {easing: 'swing'});
+		$('#projects_detail_wrapper').scrollTo($("" + itemId), 2600, {easing: 'swing'});
 	}
 
 
