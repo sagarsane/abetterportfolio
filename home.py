@@ -4,7 +4,6 @@ import jinja2
 import json
 from projects import get_project_data
 from GitHubActivityUtil import *
-from google.appengine._internal.django.core.mail.backends import console
 #import logging
 #import urllib2
 

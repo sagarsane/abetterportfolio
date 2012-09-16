@@ -44,7 +44,7 @@ $("#education_tile").click(function(){
 });
 
 $("#activities_tile").click(function(){
-	$('#wrapper').scrollTo($("#activities"), 1600, {
+	/*$('#wrapper').scrollTo($("#activities"), 1600, {
 		easing: 'swing',
 		onAfter: function(){
 			$("#name_bubble_text").html("<p>What I know and what I can do!</p>");
@@ -55,7 +55,7 @@ $("#activities_tile").click(function(){
 			$("#back_button").attr("data-href", "about");
 			$("#back_button").attr("data-current", "skills");
 		}
-	});
+	});*/
 });
 
 $("#achievements_tile").click(function(){

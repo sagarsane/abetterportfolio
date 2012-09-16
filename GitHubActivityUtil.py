@@ -18,7 +18,7 @@ def getFollowers(user):
             ret['name'] = namedUser.name + " - (" + f.login + ")"
         else:
             ret['name'] = f.login
-        ret['url'] = "https://github.com/" + f.login #f.url
+        ret['url'] = "https://github.com/" + f.login
         followers.append(ret)
     return followers
 
@@ -32,7 +32,7 @@ def getFollowing(user):
             ret['name'] = namedUser.name + " - (" + f.login + ")"
         else:
             ret['name'] = f.login
-        ret['url'] = "https://github.com/" + f.login #f.url
+        ret['url'] = "https://github.com/" + f.login
         following.append(ret)
     return following
 

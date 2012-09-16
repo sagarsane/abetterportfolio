@@ -79,7 +79,7 @@ function landingPageModel(){
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
 				var item_id = '#experience_tile_item_' + random;
 				$('#experience_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });
-				setTimeout(function(){change(exp_data_arr)}, 4000);
+				setTimeout(function(){change()}, 4000);
 			})();				
 		});
 	}
@@ -90,7 +90,6 @@ function landingPageModel(){
 			$.each(projects, function(entryIndex, entry) {
 				   proj_data += "<div id='projects_tile_item_" + (i++) + "' class='tile-text projects_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";				
 				   proj_data += "<p>" + entry + "</p>" + "</div>"; 
-
 			});
 
 			self.projectsContent(proj_data);
@@ -100,7 +99,7 @@ function landingPageModel(){
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
 				var item_id = '#projects_tile_item_' + random;
 				$('#projects_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });				
-				setTimeout(function(){change(proj_data_arr)},5650);
+				setTimeout(function(){change()},5650);
 			})();
 		});
 	}
@@ -146,8 +145,8 @@ function landingPageModel(){
 				var count = parseFloat($("#activity_tile_mask").css('width'))/parseFloat($("#activity_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
 				var item_id = '#activity_tile_item_' + random;
-				$('#activity_tile_wrapper').scrollTo($(item_id+""), 4000, {	easing: 'swing' });				
-				setTimeout(function(){change()},4870);
+				$('#activity_tile_wrapper').scrollTo($(item_id+""), 2000, {	easing: 'swing' });				
+				setTimeout(function(){change()},10000);
 			})();			
 			
 			
