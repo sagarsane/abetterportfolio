@@ -36,9 +36,6 @@ handlers:
 - url: /education
   script: home.app
 
-- url: /project_data
-  script: home.app
-
 - url: /github_activity
   script: home.app
  

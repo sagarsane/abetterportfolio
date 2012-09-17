@@ -105,6 +105,29 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.navigation_wrapper {
+    height:100%; 
+    width: 50px; 
+    background:transparent; 
+    position: fixed; 
+    left:0; 
+    top:100px;
+}
+
+#navigation { 
+    width:270px;
+    height: auto; 
+    display:none; 
+    opacity: 0.8;
+    position:absolute;
+    left: 0;
+    top: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 #filters_wrapper {
     width:100%; 
     height: 50px; 
@@ -159,7 +182,7 @@ body {
 
 
 #experience_tile_wrapper{
-	width: auto;
+	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -171,18 +194,18 @@ body {
 #experience_tile_mask{
 	margin-left: 0;
 	margin-top: 0;
-	width: 400%;
+	width: 500%;
 	height: 100%;
 }
 
 .experience_tile_item{
-	width: 25%;
+	width: 20%;
 	height: 100%;
 	float: left;
 }
 
 #education_tile_wrapper{
-	width: auto;
+	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -228,7 +251,7 @@ body {
 }
 
 #projects_tile_wrapper{
-	width: auto;
+	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -240,12 +263,12 @@ body {
 #projects_tile_mask{
 	margin-left: 0;
 	margin-top: 0;
-	width: 700%;
+	width: 1230%;
 	height: 100%;
 }
 
 .projects_tile_item{
-	width: 14.28%;
+	width: 8.33%;
 	height: 100%;
 	float: left;
 }
@@ -253,9 +276,6 @@ body {
 #projects_detail_wrapper{
 	width: auto;
 	height: 100%;
-	/*top: 0;
-	left: 0;
-	margin-left: 70px;*/
 	position: absolute;
 	overflow: hidden;	
 }

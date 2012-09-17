@@ -48,31 +48,58 @@ var name_bubble_function = function(bubbleFlag){
 }
 
 
-function landingPageModel(){
-	var exp_data_arr,edu_data_arr, proj_data_arr;
-	var i_exp = 0, i_edu = 0, i_proj = 0;
-	var exp_data_cnt = 0, edu_data_cnt = 0, proj_data_cnt = 0;
-
+function portfolioModel(){
+	var project_data;
+	var currentSelections;	
 	var self = this;
-	var exp_data = "";
-	var edu_data = "";
-	var proj_data = "";
-	self.experienceContent = ko.observable();
-	self.educationContent = ko.observable();
-	self.projectsContent = ko.observable();
+	
+	self.experienceContent = ko.observableArray();
+	self.educationContent = ko.observableArray();
+	self.githubActivities = ko.observableArray();
+	self.projects_info = ko.observableArray();
+	self.project_categories = ko.observableArray();
+	self.checkedSelections = ko.observableArray();	
+	self.navigate_bar = ko.observableArray();
+	
+	self.navigate_bar.push({"nav":"About"});
+	self.navigate_bar.push({"nav":"Experience"});
+	self.navigate_bar.push({"nav":"Education"});
+	self.navigate_bar.push({"nav":"Projects"});
+	self.navigate_bar.push({"nav":"Achievements"});
+	self.navigate_bar.push({"nav":"Contact"});
 
-
+	self.navigate = function(item){
+		$("#back_button").attr("data-href", "");
+		var goTo = this.nav;
+		switch(goTo){
+		case "About" : 	$('#wrapper').scrollTo($('#about'), 1600, {
+							easing: 'swing',
+							onAfter: function(){
+							$("#header_text").html("About");
+							  $("#back_button").hide();
+							  $("#name_bubble_text").html("<p>Hello! Thanks for visiting!</p><p>This is (almost) everything about me :). Click on any section to know more about me.</p>");
+							  $("#name_bubble").toggle("slow");
+							  name_bubble_function(0);
+							}
+						});
+						break;
+		case "Experience" : $("#experience_tile").click();break;
+		case "Education" : $("#education_tile").click();break;
+		case "Projects" : $("#projects_tile").click();break;
+		case "Achievements" : $("#achievements_tile").click();break;
+		case "Contact" : $("#contact_tile").click();break;
+		}
+	}
+	
 	self.getExperienceContent = function(){
-		$.getJSON('/experience', function(experience){
+		$.getJSON('/experience', function(data){
 			var i = 0;
-			$.each(experience, function(entryIndex, entry) {
-				   exp_data += "<div id='experience_tile_item_" + (i++) + "' class='tile-text experience_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";
-				   $.each(entry, function(i, subentry) { 
-				       exp_data += "<p>" + subentry + "</p>";
-				   }); 
-				   exp_data += "</div>";
+			var exp_data = "";
+			$.each(data.experience, function(index, entry) {
+					entry.id = "experience_tile_item_" + (i++);
+					data.experience[index] = entry;
 			});
-			self.experienceContent(exp_data);
+			self.experienceContent(data.experience);
 
 			(function change(){
 				var count = parseFloat($("#experience_tile_mask").css('width'))/parseFloat($("#experience_tile_mask").parent().css('width'));
@@ -80,42 +107,20 @@ function landingPageModel(){
 				var item_id = '#experience_tile_item_' + random;
 				$('#experience_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });
 				setTimeout(function(){change()}, 4000);
-			})();				
-		});
-	}
-
-	self.getProjectsContent = function(){
-		$.getJSON('/projects', function(projects){
-			var i = 0;
-			$.each(projects, function(entryIndex, entry) {
-				   proj_data += "<div id='projects_tile_item_" + (i++) + "' class='tile-text projects_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";				
-				   proj_data += "<p>" + entry + "</p>" + "</div>"; 
-			});
-
-			self.projectsContent(proj_data);
-
-			(function change(){
-				var count = parseFloat($("#projects_tile_mask").css('width'))/parseFloat($("#projects_tile_mask").parent().css('width'));
-				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
-				var item_id = '#projects_tile_item_' + random;
-				$('#projects_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });				
-				setTimeout(function(){change()},5650);
-			})();
+			})();			
 		});
 	}
 
 	self.getEducationContent = function(){
-		$.getJSON('/education', function(education){
+		$.getJSON('/education', function(data){
 			var i = 0;
-			$.each(education, function(entryIndex, entry) {
-				   edu_data += "<div id='education_tile_item_" + (i++) + "' class='tile-text education_tile_item' style='margin: 0; padding-left: 30px; padding-top: 20px;'><h2>" + entryIndex + "</h2><br/>";
-				   $.each(entry, function(i, subentry) { 
-				       edu_data += "<p>" + subentry + "</p>";
-				   }); 
-				   edu_data += "</div>";
+			var edu_data = "";
+			$.each(data.education, function(index, entry) {
+					entry.id = "education_tile_item_" + (i++);
+				   	data.education[index] = entry;	
 			});
 
-			self.educationContent(edu_data);
+			self.educationContent(data.education);
 
 			(function change(){
 				var count = parseFloat($("#education_tile_mask").css('width'))/parseFloat($("#education_tile_mask").parent().css('width'));
@@ -123,11 +128,11 @@ function landingPageModel(){
 				var item_id = '#education_tile_item_' + random;
 				$('#education_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });								
 				setTimeout(function(){change()},3300);					
-			})(edu_data_arr);
+			})();
 		});
 	}
 
-	self.githubActivities = ko.observableArray();
+	
 	self.get_github_activities = function()
 	{
 		$.getJSON('/github_activity', function(data)
@@ -153,33 +158,17 @@ function landingPageModel(){
 		});
 	}
 	
-	self.getExperienceContent();
-	self.getEducationContent();
-	self.getProjectsContent();
-	self.get_github_activities();
-}
-
-
-function projectDataModel(){
-
-	var self = this;
-	var project_data;
-	var currentSelections;
-	//self.checkBox = ko.observable(false);
-	self.projects_info = ko.observableArray();
-	self.project_categories = ko.observableArray();
-
-	//this.projects_info.loading = ko.observable(false);
-
+	
 	self.get_projects_info = function(){
 		self.project_categories.push({tag: "All Projects"});
-		$.getJSON('/project_data', function(data){
-			//project_data = data.projects;
-			project_data = jQuery.extend(true, {}, data.projects);
-			self.projects_info(data.projects);
-			$("#project_detail_wrapper").hide();
+
+		$.getJSON('/projects', function(data){		
 			var proj_cat = [];
+			var i = 0;
 			$.each(data.projects, function(index, entry){
+				entry.id = "projects_tile_item_" + i;
+				entry.detail_id = "projects_detail_item_" + (i++);
+				data.projects[index] = entry;
 				$.each(entry.category, function(ind, val){
 					if(proj_cat.indexOf(val) == -1){
 						proj_cat.push(val);
@@ -188,40 +177,24 @@ function projectDataModel(){
 				})
 
 			});
+			project_data = jQuery.extend(true, {}, data.projects);
+			self.projects_info(data.projects);
 			proj_cat = [];
+			
+			(function change(){
+				var count = parseFloat($("#projects_tile_mask").css('width'))/parseFloat($("#projects_tile_mask").parent().css('width'));
+				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
+				var item_id = '#projects_tile_item_' + random;
+				$('#projects_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });				
+				setTimeout(function(){change()},5650);
+			})();
+				
 		});
 	}
 
-	self.get_projects_info();
-	self.checkedSelections = ko.observableArray();
-	//self.project_about = ko.observableArray();
-	//self.project_name = ko.observableArray();
-	/*self.getDetails = function(item){
-		$("#project_details").hide();
-		$("#project_repo").hide();
-		$("#project_reco").hide();
-		$("#project_apis").hide();
-		$("#project_name").hide();
-		
-		//Insert all the detail information
-		self.project_about(item.about);
-		self.project_name(item.name);
-		//
-		$("#project_name")
-			.hide()
-			.slideDown('slow');
-			$("#sub_project_details").fadeOut(1000,"fast");
-		$("#project_details").show();
-			$("#sub_project_details").fadeIn(3000,'slow');
-		$("#project_repo").show();
-		$("#project_reco").show();
-		$("#project_apis").show();
-		//$("#project_name").show();
-	}*/
-
 	self.getDetails = function(item){
-		var itemId = "#" + item.id;
-		$("#project_detail_wrapper").toggle();
+		var itemId = "#" + item.detail_id;
+		//$("#project_detail_wrapper").toggle();
 		$('#projects_detail_wrapper').scrollTo($("" + itemId), 2600, {easing: 'swing'});
 	}
 
@@ -244,10 +217,6 @@ function projectDataModel(){
 	{
 		var is_all = 0;
 		$("#project_detail_wrapper").hide();
-		//$("#project_repo").hide();
-		//$("#project_reco").hide();
-		//$("#project_apis").hide();
-		//$("#project_name").hide();
 
 		if(event.currentTarget.checked == true)
 		{ 
@@ -282,18 +251,17 @@ function projectDataModel(){
 			});				
 		}
 	}
-
+	
+	
+	self.getExperienceContent();
+	self.getEducationContent();
+	self.get_projects_info();
+	self.get_github_activities();
 }
-
 
 $("#back_button").click(function() {
 
-	//$('a.panel').removeClass('selected');
-	//$(this).addClass('selected');
-
-	//current = $(this);
 	var goTo = $(this).attr("data-href");
-	//$(this).attr("href", "#" + )
 	if(goTo == "")
 		return false;
 	var goTo = "#" + goTo;
@@ -318,48 +286,46 @@ $("#back_button").click(function() {
 });
 
 
-/*$("#back_button_wrapper").click(function() {
-	$("#back_button").click();
-});
-*/
-
-
 $(document).ready(function() {
 
 	name_bubble_function(0);
 	$("#back_button").hide();
 	$("#back_button").removeAttr("href");
-
-	//$("#project_details").hide();
-	//$("#project_repo").hide();
-	//$("#project_reco").hide();
-	//$("#project_apis").hide();
-	//$("#project_name").hide();
-
-
+	$(".experience_heading").hide();
+	$(".projects_heading").hide();
+	$(".education_heading").hide();
+	
 	$(window).resize(function() {
 		resizePanel();
 	});
 
-
-
-	ko.applyBindings(new projectDataModel(), document.getElementById("projects"));
-	ko.applyBindings(new landingPageModel(), document.getElementById("about"));
-
-	/*$("#scrollableIndex").smoothDivScroll({ 
-		mousewheelScrolling: true,
-		manualContinuousScrolling: false,
-		visibleHotSpotBackgrounds: "always",
-		autoScrollingMode: ""
+	$("#name").hover(function(){
+		$("#name_bubble").toggle('fast');
 	});
-	*/
+
+
+	$("#experience_tile_wrapper").hover(function(){
+		$(".experience_heading").slideToggle('slow');
+	});
+
+	$("#projects_tile_wrapper").hover(function(){
+		$(".projects_heading").slideToggle('slow');
+	});
+
+	$("#education_tile_wrapper").hover(function(){
+		$(".education_heading").slideToggle('slow');
+	});
+
+
+	$("#filters_wrapper").hover(function(){
+		if($("#back_button").attr('data-current') == "projects")
+			$("#project_filters").slideToggle('fast');
+	});
+
+	$(".navigation_wrapper").hover(function(){
+		$("#navigation").slideToggle('fast');
+	});
+	
+	ko.applyBindings(new portfolioModel());
 });
 
-$("#name").hover(function(){
-	$("#name_bubble").toggle('fast');
-});
-
-$("#filters_wrapper").hover(function(){
-	if($("#back_button").attr('data-current') == "projects")
-		$("#project_filters").slideToggle('fast');
-});
