@@ -61,6 +61,7 @@ function portfolioModel(){
 	self.checkedSelections = ko.observableArray();	
 	self.navigate_bar = ko.observableArray();
 	
+	
 	self.navigate_bar.push({"nav":"About"});
 	self.navigate_bar.push({"nav":"Experience"});
 	self.navigate_bar.push({"nav":"Education"});
@@ -68,6 +69,7 @@ function portfolioModel(){
 	self.navigate_bar.push({"nav":"Achievements"});
 	self.navigate_bar.push({"nav":"Contact"});
 
+	
 	self.navigate = function(item){
 		$("#back_button").attr("data-href", "");
 		var goTo = this.nav;
@@ -89,25 +91,35 @@ function portfolioModel(){
 		case "Achievements" : $("#achievements_tile").click();break;
 		case "Contact" : $("#contact_tile").click();break;
 		}
+		
 	}
 	
 	self.getExperienceContent = function(){
 		$.getJSON('/experience', function(data){
 			var i = 0;
 			var exp_data = "";
+			
+			var cnt = data.experience.length;
+			var pc1 = cnt * 100;
+			var pc2 = (100 / cnt);
+			$("#experience_tile_mask").width( pc1 + "%");
 			$.each(data.experience, function(index, entry) {
 					entry.id = "experience_tile_item_" + (i++);
 					data.experience[index] = entry;
 			});
+			
 			self.experienceContent(data.experience);
-
+			
+			
 			(function change(){
 				var count = parseFloat($("#experience_tile_mask").css('width'))/parseFloat($("#experience_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
 				var item_id = '#experience_tile_item_' + random;
 				$('#experience_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });
 				setTimeout(function(){change()}, 4000);
-			})();			
+			})();
+			
+			$(".experience_tile_item").width( pc2 + "%");
 		});
 	}
 
@@ -115,13 +127,18 @@ function portfolioModel(){
 		$.getJSON('/education', function(data){
 			var i = 0;
 			var edu_data = "";
+			var cnt = data.education.length;
+			var pc1 = cnt * 100;
+			var pc2 = (100 / cnt);
+			
+			$("#education_tile_mask").width( pc1 + "%");
 			$.each(data.education, function(index, entry) {
 					entry.id = "education_tile_item_" + (i++);
 				   	data.education[index] = entry;	
 			});
 
 			self.educationContent(data.education);
-
+			$(".education_tile_item").width( pc2 + "%");
 			(function change(){
 				var count = parseFloat($("#education_tile_mask").css('width'))/parseFloat($("#education_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
@@ -129,6 +146,11 @@ function portfolioModel(){
 				$('#education_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });								
 				setTimeout(function(){change()},3300);					
 			})();
+			
+			
+			
+			
+			
 		});
 	}
 
@@ -139,13 +161,18 @@ function portfolioModel(){
 		{
 			var i = 0;
 			var entries = data.activities;
+			var cnt = data.activities.length;
+			var pc1 = cnt * 100;
+			var pc2 = (100 / cnt);
+			
+			$("#activity_tile_mask").width( pc1 + "%");
 			$.each(entries, function(index, entry){
 				entries[index].id="activity_tile_item_" + (i++);
 				if(entries[index].name.length > 40)
 					entries[index].name = entries[index].name.substring(0,40) + "...";
 			});
 			self.githubActivities(entries);
-			
+			$(".activity_tile_item").width( pc2 + "%");
 			(function change(){
 				var count = parseFloat($("#activity_tile_mask").css('width'))/parseFloat($("#activity_tile_mask").parent().css('width'));
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
@@ -165,6 +192,13 @@ function portfolioModel(){
 		$.getJSON('/projects', function(data){		
 			var proj_cat = [];
 			var i = 0;
+			var cnt = data.projects.length;
+			var pc1 = (cnt+2) * 100;
+			var pc2 = (100 / cnt);
+			
+			$("#projects_tile_mask").width( pc1 + "%");
+			$("#projects_detail_mask").width( pc1 + "%");
+			
 			$.each(data.projects, function(index, entry){
 				entry.id = "projects_tile_item_" + i;
 				entry.detail_id = "projects_detail_item_" + (i++);
@@ -180,9 +214,12 @@ function portfolioModel(){
 			project_data = jQuery.extend(true, {}, data.projects);
 			self.projects_info(data.projects);
 			proj_cat = [];
+			$(".projects_tile_item").width( pc2 + "%");
+			$(".projects_detail_item").width( pc2 + "%");
 			
 			(function change(){
 				var count = parseFloat($("#projects_tile_mask").css('width'))/parseFloat($("#projects_tile_mask").parent().css('width'));
+				count--;
 				var random = Math.floor(Math.random() * ( (count-1) - 0 + 1)) + 0;
 				var item_id = '#projects_tile_item_' + random;
 				$('#projects_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });				
