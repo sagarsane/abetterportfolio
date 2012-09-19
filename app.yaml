@@ -2,7 +2,7 @@ application: abetterportfolio
 version: 1
 runtime: python27
 api_version: 1
-threadsafe: true
+threadsafe: false
 
 handlers:
 - url: /favicon\.ico
@@ -38,7 +38,13 @@ handlers:
 
 - url: /github_activity
   script: home.app
+
+- url: /github_archive
+  script: home.app
  
+- url: /oauth2callback
+  script: oauth2client/appengine.py
+  
 - url: /.*
   static_files: allhtml/404.html
   upload: allhtml/404.html

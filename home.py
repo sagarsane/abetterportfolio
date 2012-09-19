@@ -4,6 +4,7 @@ import jinja2
 import json
 from utils import get_gist_data
 from GitHubActivityUtil import *
+from github_archive_bigquery_handler import *
 #import logging
 #import urllib2
 
@@ -50,7 +51,7 @@ class GithubActivity(Handler):
     def get(self):
         activity = {}
         entries = []
-        user = setUser("<user>", "<password>")
+        user = setUser("username", "password")
         entries = entries + getFollowers(user)
         entries = entries + getFollowing(user)
         entries = entries + getWatchedRepos(user)
@@ -58,9 +59,15 @@ class GithubActivity(Handler):
         self.response.headers['Content-Type'] = 'application/json'
         self.write(json.dumps(activity))
         
+class GithubArchiveBigQuery(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'        
+        self.write(json.dumps(execute_bigquery_githubarchive()))
+        
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/home', MainPage),                                
                                ('/projects', Projects), 
                                ('/experience', Experience),
                                ('/education', Education),
-                               ('/github_activity', GithubActivity)], debug=True)
+                               ('/github_activity', GithubActivity),
+                               ('/github_archive', GithubArchiveBigQuery)], debug=True)

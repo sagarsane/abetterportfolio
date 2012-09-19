@@ -18,6 +18,13 @@ local.properties
 
 # External tool builders
 .externalToolBuilders/
+httplib2/
+oauth2/
+oauth2client/
+uritemplate/
+github/
+gflags.*
+gflags_validators.*
 
 # Locally stored "Eclipse launch configurations"
 *.launch

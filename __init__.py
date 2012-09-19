@@ -11,8 +11,3 @@
 
 # You should have received a copy of the GNU Lesser General Public License along with PyGithub.  If not, see <http://www.gnu.org/licenses/>.
 
-from Github import Github
-from GithubException import GithubException
-from InputFileContent import InputFileContent
-from InputGitAuthor import InputGitAuthor
-from InputGitTreeElement import InputGitTreeElement
