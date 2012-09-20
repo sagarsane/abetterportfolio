@@ -1,14 +1,17 @@
+import httplib2
 import webapp2
 import os
 import jinja2
 import json
+from apiclient.discovery import build
+from oauth2client.appengine import AppAssertionCredentials
 from utils import get_gist_data
 from GitHubActivityUtil import *
 from github_archive_bigquery_handler import *
-#import logging
-#import urllib2
 
-#from google.appengine.ext.webapp.util import run_wsgi_app
+credentials = AppAssertionCredentials(scope='https://www.googleapis.com/auth/bigquery')
+http = credentials.authorize(httplib2.Http())
+
 template_dir = os.path.join(os.path.dirname(__file__), 'allhtml')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
@@ -61,8 +64,9 @@ class GithubActivity(Handler):
         
 class GithubArchiveBigQuery(Handler):
     def get(self):
+        service = build("bigquery", "v2", http=http)
         self.response.headers['Content-Type'] = 'application/json'        
-        self.write(json.dumps(execute_bigquery_githubarchive()))
+        self.write(json.dumps(execute_bigquery_githubarchive(service)))
         
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/home', MainPage),                                
