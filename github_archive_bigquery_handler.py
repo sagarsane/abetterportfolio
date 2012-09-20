@@ -58,5 +58,5 @@ def execute_bigquery_githubarchive(service):
                 AND PARSE_UTC_USEC(created_at) >= PARSE_UTC_USEC('2012-07-01 00:00:00')
                 GROUP BY type, actor_attributes_login, payload_action, payload_pull_request_title, repository_url, repository_description, repository_name, repository_language,  url, date 
                 ORDER BY date DESC LIMIT 100;"""
-    return queryTableData(service, '168497805954', 'test', 'github_query_result', startIndex=0)
+    return queryTableData(service, '<project_client_id>', 'test', 'github_query_result', startIndex=0)
     #return runSyncQuery(service, '<project_client_id>','test',query)
