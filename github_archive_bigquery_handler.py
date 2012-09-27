@@ -4,7 +4,6 @@ Created on Sep 18, 2012
 @author: Sagar
 
 '''
-
 import pprint
 from oauth2client.client import AccessTokenRefreshError
 from apiclient.errors import HttpError
@@ -59,4 +58,3 @@ def execute_bigquery_githubarchive(service):
                 GROUP BY type, actor_attributes_login, payload_action, payload_pull_request_title, repository_url, repository_description, repository_name, repository_language,  url, date 
                 ORDER BY date DESC LIMIT 100;"""
     return queryTableData(service, '<project_client_id>', 'test', 'github_query_result', startIndex=0)
-    #return runSyncQuery(service, '<project_client_id>','test',query)

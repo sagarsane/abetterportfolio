@@ -57,6 +57,10 @@ function portfolioModel(){
 	self.educationContent = ko.observableArray();
 	self.githubActivities = ko.observableArray();
 	self.projects_info = ko.observableArray();
+	self.achievements_info = ko.observableArray();
+	self.contact_info = ko.observableArray();
+	self.social_info = ko.observableArray();
+	self.hobbies_info = ko.observableArray();
 	self.project_categories = ko.observableArray();
 	self.checkedSelections = ko.observableArray();	
 	self.navigate_bar = ko.observableArray();
@@ -145,12 +149,7 @@ function portfolioModel(){
 				var item_id = '#education_tile_item_' + random;
 				$('#education_tile_wrapper').scrollTo($(item_id+""), 900, {	easing: 'swing' });								
 				setTimeout(function(){change()},3300);					
-			})();
-			
-			
-			
-			
-			
+			})();			
 		});
 	}
 
@@ -229,6 +228,32 @@ function portfolioModel(){
 		});
 	}
 
+
+	self.get_achievements_hobbies_info = function(){
+		$.getJSON('/achievements', function(data){		
+			$.each(data.achievements, function(index, entry){
+				self.achievements_info.push(entry);
+			});
+			$.each(data.hobbies, function(index, entry){
+				self.hobbies_info.push(entry);
+			});
+			
+		});
+	}
+
+	self.get_contact_social_info = function(){
+		$.getJSON('/contact', function(data){		
+			$.each(data.email, function(index, entry){
+				self.contact_info.push(entry);
+			});
+			$.each(data.social, function(index, entry){
+				self.social_info.push(entry);
+			});
+			
+		});
+	}
+
+	
 	self.getDetails = function(item){
 		var itemId = "#" + item.detail_id;
 		//$("#project_detail_wrapper").toggle();
@@ -293,6 +318,8 @@ function portfolioModel(){
 	self.getExperienceContent();
 	self.getEducationContent();
 	self.get_projects_info();
+	self.get_achievements_hobbies_info();
+	self.get_contact_social_info();
 	self.get_github_activities();
 }
 

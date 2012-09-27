@@ -36,12 +36,18 @@ handlers:
 - url: /education
   script: home.app
 
+- url: /contact
+  script: home.app
+
+- url: /achievements
+  script: home.app
+
 - url: /github_activity
   script: home.app
 
 - url: /github_archive
   script: home.app
- 
+  
 - url: /oauth2callback
   script: oauth2client/appengine.py
   

@@ -114,7 +114,7 @@
                        			</div>	
                         	</div>
                     		<div class="metro-section size4">
-	                    		<h2 style="color: white;">Github Activity Feed</h2>
+	                    		<h2 ><a href="/github_archive" target="_blank" title="Click for a lot more details!" style="color:white;font-weight: 500;font-size: 22pt;text-decoration: none;">Github Activity Feed</a></h2>
                         		<div id="activities_tile" class="tile tile-triple bg-color-blueLight">
                         			<div id="activity_tile_wrapper">
                            				<div id="activity_tile_mask" data-bind="foreach: githubActivities">
@@ -133,13 +133,13 @@
                         		<div id="achievements_tile" class="tile tile-triple bg-color-green">
                            			<div class="tile-text">
 		                                <h2>Achievements</h2>
-                               			<p>Dynamic achievements Content</p>
+                               			<p>Click for details!</p>
                            			</div>
                        			</div>
                         		<div id="contact_tile" class="tile tile-triple bg-color-blueDark">
                            			<div class="tile-text">
 		                                <h2>Contact</h2>
-                               			<p>sagar2217@gmail.com</p>
+                               			<p>Click for details!</p>
                            			</div>
                        			</div>
              				</div>
@@ -280,14 +280,20 @@
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Achievements</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="">
+                      			<div class="tile-text">
+                            		<ul data-bind="foreach: achievements_info">
+				                    	<li data-bind="text: pt"></li>
+			                        </ul>
                     			</div>
                     		</div>
                     	</div>
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Hobbies</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-blueDark">
-                      			<div class="tile-text"  data-bind="">
+                      			<div class="tile-text">
+                            		<ul data-bind="foreach: hobbies_info">
+				                    	<li data-bind="text: pt"></li>
+			                        </ul>
                     			</div>
                     		</div>
                     	</div>                    	
@@ -304,14 +310,20 @@
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Contact</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="">
+                      			<div class="tile-text">
+                            		<ul data-bind="foreach: contact_info">
+				                    	<li><a style="text-decoration: none;" data-bind="attr: {href: 'mailto:' + email}"><strong data-bind="text: email"></strong></a></li>
+			                        </ul>                      			
                     			</div>
                     		</div>
                     	</div>
 	    	           	<div class="metro-section size3">
 	        	       		<h2>Social</h2>
                 	   		<div class="tile tile-triple tile-double-vertical bg-color-pinkDark">
-                      			<div class="tile-text"  data-bind="">
+                      			<div class="tile-text">
+                            		<ul data-bind="foreach: social_info">
+				                    	<li><a style="text-decoration: none;" target="_blank" data-bind="attr: {href: link}"><strong data-bind="text: text"></strong></a></li>
+			                        </ul>                      			                      			                      			
                     			</div>
                     		</div>
                     	</div>                    	
