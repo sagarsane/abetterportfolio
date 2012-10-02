@@ -18,12 +18,6 @@ handlers:
 - url: /img
   static_dir: img
 
-- url: /
-  script: home.app
-
-- url: /test_home
-  script: home.app
-
 - url: /home
   script: home.app
 
@@ -42,6 +36,9 @@ handlers:
 - url: /achievements
   script: home.app
 
+- url: /archive_data
+  script: home.app
+
 - url: /github_activity
   script: home.app
 
@@ -52,8 +49,8 @@ handlers:
   script: oauth2client/appengine.py
   
 - url: /.*
-  static_files: allhtml/404.html
-  upload: allhtml/404.html
+  static_files: templates/404.html
+  upload: templates/404.html
 
 libraries:
 - name: jinja2
