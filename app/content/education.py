@@ -5,7 +5,7 @@ Created on Oct 1, 2012
 '''
 import json
 from mainhandler import Handler
-from app.utilities.utils import get_gist_data
+from ..utilities.utils import get_gist_data
 
 class Education(Handler):
     def get(self):

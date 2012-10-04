@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Sagar Sane -- Developer -- @sagarsane
+
+# THANKS
+
+    Johnathan Conway -- Main Idea -- @jonathanconway
+
+
+# TECHNOLOGY COLOPHON
+	Python App Engine, BigQuery, GithubArchive
+    HTML5, CSS3, jQuery

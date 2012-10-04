@@ -1,6 +1,6 @@
 import json
 from mainhandler import Handler
-from app.utilities.utils import get_gist_data
+from ..utilities.utils import get_gist_data
 
 
 class Contact(Handler):

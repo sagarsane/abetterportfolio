@@ -10,7 +10,7 @@ from apiclient.discovery import build
 from oauth2client.appengine import AppAssertionCredentials
 
 from mainhandler import Handler
-from app.utilities.github_archive_bigquery_handler import execute_bigquery_githubarchive
+from ..utilities.github_archive_bigquery_handler import execute_bigquery_githubarchive
 
 archive = { "etag" : "\"NZ75KOpnCp1s2IAQ18M09x_sP8o/KcQsQ0FhkLKU4KWFwPWeyBrT45w\"",
   "kind" : "bigquery#tableDataList",
