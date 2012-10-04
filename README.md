@@ -1,13 +1,17 @@
-Initializing the project.
+Initializing the project
+========================
+
+
 Idea discussed here: https://github.com/h5bp/lazyweb-requests/issues/86
 A better portfolio - For Developers/Programmers. (Current, a prototype for web application for my own portfolio. Will extend it to a framework once basic setup is done!)
 
-The aim of the project:
-  - Build a portfolio tailored for a developer (a personal project at first)
-  - Eventually, the idea is to have a framework setup for creating/customizing portfolios specifically tailored for
+The aim of the project
+-----------------------
+- Build a portfolio tailored for a developer (a personal project at first)
+- Eventually, the idea is to have a framework setup for creating/customizing portfolios specifically tailored for
 developers/programmers.
 
-Currently, I am working on this project as a Portfolio for myself. I am using all the libraries and AppEngine mentioned below, so that I can setup the basic framework. To make it a customizable portfolio builting framework will be better once I have this!
+*Currently, I am working on this project as a Portfolio for myself. I am using all the libraries and AppEngine mentioned below, so that I can setup the basic framework. To make it a customizable portfolio builting framework will be better once I have this!*
 
 
 Plugins/Libraries used:
@@ -17,4 +21,4 @@ Plugins/Libraries used:
 - jQuery.ScrollTo (https://github.com/flesler/jquery.scrollTo)
 - PyGithub (https://github.com/jacquev6/PyGithub)
 
-Running on Google AppEngine - Python
+*Running on Google AppEngine - Python*
