@@ -22,3 +22,12 @@ Plugins/Libraries used:
 - PyGithub (https://github.com/jacquev6/PyGithub)
 
 *Running on Google AppEngine - Python*
+
+
+Steps to setup your own portfolio using the Metro-UI Theme
+----------------------------------------------------------
+
+**Note:** Current setup allows anyone to setup their portfolio data (documented below) as a *Github GIST JSON File*
+and then use this file on the python backend to consume them in this portfolio.
+
+
