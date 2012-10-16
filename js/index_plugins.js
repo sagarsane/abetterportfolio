@@ -161,6 +161,9 @@ function portfolioModel(){
 	
 	self.get_github_activities = function()
 	{
+		//load the "Loading" gif here in that panel.
+		$("#loading_gif").show();
+		$("#activities_tile").hide();
 		$.getJSON('/github_activity', function(data)
 		{
 			var i = 0;
@@ -175,6 +178,9 @@ function portfolioModel(){
 				if(entries[index].name.length > 40)
 					entries[index].name = entries[index].name.substring(0,40) + "...";
 			});
+			//remove the "Loading" gif here in that panel.
+			$("#loading_gif").hide();
+			$("#activities_tile").show();
 			self.githubActivities(entries);
 			$(".activity_tile_item").width( pc2 + "%");
 			(function change(){
