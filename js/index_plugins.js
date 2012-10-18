@@ -402,5 +402,27 @@ $(document).ready(function() {
 	});
 	
 	ko.applyBindings(new portfolioModel());
+	
+	
+	
+	$("div#experienceScrollable").smoothDivScroll({
+		/*hotSpotScrollingInterval: 45*/
+		autoScrollingMode: "always",
+		autoScrollingDirection: "endlessLoopLeft",
+		autoScrollingStep: 1,
+		autoScrollingInterval: 15
+	});
+	
+	
+	$("div#experienceScrollable").bind("mouseover", function () {
+		$(this).smoothDivScroll("stopAutoScrolling");
+	}).bind("mouseout", function () {
+		$(this).smoothDivScroll("startAutoScrolling");
+	});
+	
+	var num = 5;
+	var wid = 350 * num;
+	$("#experienceScrollableSections").width( wid + "px");
+	$("#experienceScrollableSections scrollWrapper scrollableArea").width(wid + "px");
 });
 

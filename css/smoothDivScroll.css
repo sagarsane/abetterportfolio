@@ -10,21 +10,21 @@ div.scrollingHotSpotLeft
 	height: 100%;
 	/* There is a big background image and it's used to solve some problems I experienced
     in Internet Explorer 6. */
-	/*background-image: url(../images/big_transparent.gif);*/
+	background-image: url(/img/big_transparent.gif);
 	background-repeat: repeat;
 	background-position: center center;
 	position: absolute;
 	z-index: 200;
 	left: 0;
 	/*  The first url is for Firefox and other browsers, the second is for Internet Explorer */
-	cursor: url(../img/cursor_arrow_left.png), url(../img/cursor_arrow_left.cur),w-resize;
+	cursor: url(/img/cursor_arrow_left.png), url(/img/cursor_arrow_left.cur),w-resize;
 }
 
 /* Visible left hotspot */
 div.scrollingHotSpotLeftVisible
 {
-	/*background-image: url(img/arrow_left.gif);*/				
-	/*background-color: #fff;*/
+	background-image: url(/img/arrow_left.gif);				
+	background-color: #fff;
 	background-repeat: no-repeat;
 	opacity: 0.35; /* Standard CSS3 opacity setting */
 	-moz-opacity: 0.35; /* Opacity for really old versions of Mozilla Firefox (0.9 or older) */
@@ -38,20 +38,20 @@ div.scrollingHotSpotRight
 	min-width: 75px;
 	width: 10%;
 	height: 100%;
-	/*background-image: url(../images/big_transparent.gif);*/
+	background-image: url(/img/big_transparent.gif);
 	background-repeat: repeat;
 	background-position: center center;
 	position: absolute;
 	z-index: 200;
 	right: 0;
-	cursor: url(../img/cursor_arrow_right.png), url(../img/cursor_arrow_right.cur),w-resize;
+	cursor: url(/img/cursor_arrow_right.png), url(/img/cursor_arrow_right.cur),e-resize;
 }
 
 /* Visible right hotspot */
 div.scrollingHotSpotRightVisible
 {
-	/*background-image: url(../img/arrow_right.gif);*/
-	/*background-color: #fff;*/
+	background-image: url(/img/arrow_right.gif);
+	background-color: #fff;
 	background-repeat: no-repeat;
 	opacity: 0.35;
 	filter: alpha(opacity = 35);
