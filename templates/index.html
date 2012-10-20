@@ -250,12 +250,18 @@
 			<div class="metro" style="height: 100%;">
             <div class="layout" style="height: 100%;">
            		<div class="content clearfix" id="content" style="height: 100%; margin-left: 60px">
-    	       		<div class="metro-sections" style="margin-top: -50px; width: 2240px; ">
+    	       		<div class="metro-sections" style="margin-top: -50px; width: 2240px; " data-bind="foreach: educationContent">
 	    	           	<div class="metro-section size3">
-	        	       		<h2>Education</h2>
-                	   		<div class="tile tile-triple tile-double-vertical bg-color-greenDark">
-                      			<div class="tile-text"  data-bind="">
-                    			</div>
+	        	        	<h2 data-bind="text: name" style="color: white;"></h2>
+                	   		<div class="tile tile-double tile-double-vertical bg-color-greenDark" style="overflow-y: auto; ">
+                	   			<h2 style="color: white;padding-left: 5px;">Details: </h2>
+                               	<ul data-bind="foreach: description">
+				                   	<li data-bind="text: pt"></li>
+			                    </ul>
+			                    <h2 style="color: white;padding-left: 5px;">Courses: </h2>
+                               	<ul data-bind="foreach: courses">
+				                   	<li data-bind="text: pt"></li>
+			                    </ul>			                    
                     		</div>
                     	</div>
                 	</div>
