@@ -17,42 +17,77 @@
 
 
 $(document).ready(function() {
-	var a_div = '<div style="cursor: default;" id="activity" class="tile bg-color-orange">' +
-		   				'<div class="tile-announce" style="">' + 
-		   				'<div class="tile-text announce-content">' +
-		   					'<div class=tile-text>' +
-		   						'<h2 style="font-size:12px; "> An H2 here? </h2>' +
-		   						'<div class="tile-text">';
-							
+	var totalEntries = -1;
+	var section_cnt = -1;
+	var tiles_cnt = -1;
+	var h2_content = "";
+	var tile_content = "";
+	var tile_description = "";
+	
+	$.getJSON('/archive_data', function(archive){
+		totalEntries = archive.totalRows;
+		sections_cnt = 1;
+		tiles_cnt = 0;
+		var main_content = "<div id='sections_" + sections_cnt + "' class='metro-section size12' style='height: 500px;'>";
+		$.each(archive.rows, function(index, entry){	
+			h2_data = "";
+			tile_content = "";
+			tile_description = "";
+			$.each(entry.f, function(index, data){
+				switch(index){
+				case 0: tile_description = data.v;
+						break;//type
+				case 4: h2_content = data.v;
+						break;//repository_name
+				case 5: h2_content = "<a style='color:white;font-weight: 500;font-size:12px;' target='_blank' href='" + data.v + "'>" + h2_content + "</a>";
+						break;//repository_url
+				case 6: tile_content = data.v;
+						break;
+				case 7: h2_content += " - <strong>" + data.v + "</strong>";
+						break;//repository_language
+				case 8: tile_description = "<a style='color:white;font-weight: 500;font-size:12px;' target='_blank' href='" + data.v + "'>" + tile_description + "</a>";
+						break;//url
+				case 9: tile_description = tile_description + " - " + Date.parse(data.v).toString("dddd, MMMM dd, yyyy h:mm:ss tt");
+						break;//date
+				}
 				
-	var end_div =				'</div>' +
-							'</div>' + 
-						'</div>'+
-						'<div class="announce-description" style="height: auto;">' + 
-							'<div class="text"><strong>Something here</strong></div>' +
+			});
+
+			var content = "" +
+			'<div style="cursor: default;" id="activity" class="tile tile-double bg-color-orange">' +
+				'<div class="tile-announce" style="">' + 
+					'<div class="tile-text announce-content">' +
+						'<div class=tile-text>' +
+							'<h2 style="font-size:12px; ">' + h2_content + '</h2>' +
+							'<div class="tile-text">' +
+								tile_content +
+							'</div>' +
+						'</div>' + 
+					'</div>'+
+					'<div class="announce-description" style="height: auto;">' + 
+						'<div class="text"><strong>' + tile_description + '</strong></div>' +
 						'</div>'+ 
-						'</div>' +
+					'</div>' +
 				'</div>';
-	var i;
+												
+
+			main_content += content;
+
+			tiles_cnt++;
+			if(tiles_cnt == 9){
+				tiles_cnt = 0;
+				main_content += "</div>";
+				sections_cnt++;
+				main_content += "<div id='sections_" + sections_cnt + "' class='metro-section size12' style='height: 500px;'>";
+			}
+		});
+		$("#sections_holder").append(main_content);
+		$("#sections_holder").append("</div>");
+	});
+
+						
 	
-	for (i = 0; i < 18; i++){
-		$('#sections_1').append(a_div + 'A Card in Section 1' + end_div);
-		$('#sections_2').append(a_div + 'A Card in Section 2' + end_div);
-		$('#sections_3').append(a_div + 'A Card in Section 3' + end_div);
-		$('#sections_4').append(a_div + 'A Card in Section 4' + end_div);
-		$('#sections_5').append(a_div + 'A Card in Section 5' + end_div);
-		$('#sections_6').append(a_div + 'A Card in Section 6' + end_div);
-		$('#sections_7').append(a_div + 'A Card in Section 7' + end_div);
-		$('#sections_8').append(a_div + 'A Card in Section 8' + end_div);
-		$('#sections_9').append(a_div + 'A Card in Section 9' + end_div);
-		$('#sections_10').append(a_div + 'A Card in Section 10' + end_div);
-		$('#sections_11').append(a_div + 'A Card in Section 11' + end_div);
-		$('#sections_12').append(a_div + 'A Card in Section 12' + end_div);
-		$('#sections_13').append(a_div + 'A Card in Section 13' + end_div);
-		
-	}
-	
-	
+	$("#sections_holder").width("");
 	$("div#sections_holderScrollable").smoothDivScroll({
 		hotSpotScrollingInterval: 45,
 		autoScrollingMode: "",
@@ -64,6 +99,6 @@ $(document).ready(function() {
 	}).bind("mouseout", function () {
 		$(this).smoothDivScroll("startAutoScrolling");
 	});
-
+    
 	
 });

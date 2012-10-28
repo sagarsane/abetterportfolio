@@ -78,7 +78,7 @@ textarea {
 
 #sections_holderScrollable{
 	width: 100%;
-	height: auto;
+	height: 500px;
 	position: relative;
 }
 
@@ -107,9 +107,14 @@ body {
 }
 
 
-a:hover {
-    background-color: #fe57a1;
+a:link {
+	text-decoration: underline;
 }
+a:hover{
+    background-color: #fe57a1;
+    text-decoration: none;
+}
+
 
 .github_h2:hover {
     background-color: #fe57a1;
