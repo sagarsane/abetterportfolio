@@ -20,6 +20,8 @@ Plugins/Libraries used:
 - KnockoutJS (https://github.com/SteveSanderson/knockout)
 - jQuery.ScrollTo (https://github.com/flesler/jquery.scrollTo)
 - PyGithub (https://github.com/jacquev6/PyGithub)
+- GithubArchive.org (https://github.com/igrigorik/githubarchive.org | http://www.githubarchive.org/) 
+
 
 *Running on Google AppEngine - Python*
 
