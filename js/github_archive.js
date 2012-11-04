@@ -1,4 +1,8 @@
-(function() {
+/*jslint browser:true */
+/*global $, jQuery*/
+
+(function () {
+	"use strict";
     var noop = function noop() {};
     var methods = [
         'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
@@ -16,26 +20,35 @@
 }());
 
 
-$(document).ready(function() {
-	var totalEntries = -1;
-	var section_cnt = -1;
-	var tiles_cnt = -1;
-	var h2_content = "";
-	var tile_content = "";
-	var tile_description = "";
-	
-	$.getJSON('/archive_data', function(archive){
+$(document).ready(function () {
+	"use strict";
+	var totalEntries = -1, sections_cnt = -1, tiles_cnt = -1, h2_content = "", tile_content = "", tile_description = "", tile_color = "", h2_data = "";
+	$.getJSON('/archive_data', function (archive) {
 		totalEntries = archive.totalRows;
 		sections_cnt = 1;
 		tiles_cnt = 0;
 		var main_content = "<div id='sections_" + sections_cnt + "' class='metro-section size12' style='height: 500px;'>";
-		$.each(archive.rows, function(index, entry){	
+		$.each(archive.rows, function (index, entry) {	
 			h2_data = "";
 			tile_content = "";
 			tile_description = "";
-			$.each(entry.f, function(index, data){
-				switch(index){
+			$.each(entry.f, function (index, data) {
+				switch (index) {
 				case 0: tile_description = data.v;
+					switch (data.v) {//PullRequestReviewCommentEvent OR IssuesEvent OR IssueCommentEvent OR PullRequestEvent
+					case "PullRequestReviewCommentEvent":
+						tile_color = "bg-color-greenLight";
+						break;
+					case "IssuesEvent":
+						tile_color = "bg-color-orangeDark";
+						break;
+					case "IssueCommentEvent":
+						tile_color = "bg-color-yellow";
+						break;
+					case "PullRequestEvent":
+						tile_color = "bg-color-pink";
+						break;						
+					}
 						break;//type
 				case 4: h2_content = data.v;
 						break;//repository_name
@@ -49,12 +62,10 @@ $(document).ready(function() {
 						break;//url
 				case 9: tile_description = tile_description + " - " + Date.parse(data.v).toString("dddd, MMMM dd, yyyy h:mm:ss tt");
 						break;//date
-				}
-				
+				}	
 			});
-
 			var content = "" +
-			'<div style="cursor: default;" id="activity" class="tile tile-double bg-color-orange">' +
+			'<div style="cursor: default;" id="activity" class="tile tile-double ' + tile_color + '">' +
 				'<div class="tile-announce" style="">' + 
 					'<div class="tile-text announce-content">' +
 						'<div class=tile-text>' +
@@ -69,36 +80,26 @@ $(document).ready(function() {
 						'</div>'+ 
 					'</div>' +
 				'</div>';
-												
-
 			main_content += content;
-
-			tiles_cnt++;
-			if(tiles_cnt == 9){
+			tiles_cnt += 1;
+			if (tiles_cnt === 9) {
 				tiles_cnt = 0;
 				main_content += "</div>";
-				sections_cnt++;
+				sections_cnt += 1;
 				main_content += "<div id='sections_" + sections_cnt + "' class='metro-section size12' style='height: 500px;'>";
 			}
 		});
 		$("#sections_holder").append(main_content);
 		$("#sections_holder").append("</div>");
 	});
-
-						
-	
 	$("#sections_holder").width("");
 	$("div#sections_holderScrollable").smoothDivScroll({
 		hotSpotScrollingInterval: 45,
 		autoScrollingMode: "",
 	});
-	
-	
 	$("div#sections_holderScrollable").bind("mouseover", function () {
 		$(this).smoothDivScroll("stopAutoScrolling");
 	}).bind("mouseout", function () {
 		$(this).smoothDivScroll("startAutoScrolling");
 	});
-    
-	
 });

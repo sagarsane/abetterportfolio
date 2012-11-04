@@ -1086,9 +1086,12 @@ class GithubArchiveHTML(Handler):
         
 class GithubArchiveBigQuery(Handler):
     def get(self):
-        #service = build("bigquery", "v2", http=http)        
-        #parsed_archive = execute_bigquery_githubarchive(service)
         self.response.headers['Content-Type'] = 'application/json'
         """Local_parser_result"""
         self.write(json.dumps(local_archive))
-        #self.write(json.dumps(parsed_archive))
+        
+        """Remote_parser_result
+        service = build("bigquery", "v2", http=http)        
+        parsed_archive = execute_bigquery_githubarchive(service)
+        self.write(json.dumps(parsed_archive))
+        """
