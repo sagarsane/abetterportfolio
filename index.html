@@ -52,6 +52,7 @@ developers/programmers.</li>
 <p>Plugins/Libraries used:</p>
 
 <ul>
+<li>HTML5-Boilerplate(<a href="https://github.com/h5bp/html5-boilerplate">https://github.com/h5bp/html5-boilerplate</a> | <a href="http://html5boilerplate.com">http://html5boilerplate.com</a>)</li>
 <li>Metro-UI-CSS (<a href="https://github.com/olton/Metro-UI-CSS">https://github.com/olton/Metro-UI-CSS</a>)</li>
 <li>SmoothDivScroll (<a href="https://github.com/tkahn/Smooth-Div-Scroll">https://github.com/tkahn/Smooth-Div-Scroll</a>)</li>
 <li>KnockoutJS (<a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a>)</li>
@@ -60,7 +61,20 @@ developers/programmers.</li>
 <li>GithubArchive.org (<a href="https://github.com/igrigorik/githubarchive.org">https://github.com/igrigorik/githubarchive.org</a> | <a href="http://www.githubarchive.org/">http://www.githubarchive.org/</a>) </li>
 </ul><p><em>Running on Google AppEngine - Python</em></p>
 
-<h2>Steps to setup your own portfolio using the Metro-UI Theme</h2>
+<h2>Features</h2>
+
+<ul>
+<li>Show your work experience, education, project details in a live tiles like UI.</li>
+<li>Data easily customizable using Github Gists (Steps to add data provided later)</li>
+<li>Using <a href="http://githubarchive.org">GithubArchive.org</a>, show you recent Github Activity feed by using the Windows 8 like Tiles.
+
+<ul>
+<li>Events that can be displayed here are <strong>IssueEvent</strong>, <strong>PullRequestEvent</strong>, <strong>IssueCommentEvent</strong>, <strong>PullRequestReviewComment</strong>.</li>
+</ul>
+</li>
+<li>The query used here can again be customized as user wants. The data is fed to the UI using JSON files.</li>
+<li>UI is updated automatically using the <em>observable</em> feature in <strong>KnockoutJS</strong>.</li>
+</ul><h2>Steps to setup your own portfolio using the Metro-UI Theme</h2>
 
 <p><strong>Note:</strong> Current setup allows anyone to setup their portfolio data (documented below) as a <em>Github GIST JSON File</em>
 and then use this file on the python backend to consume them in this portfolio.</p>
