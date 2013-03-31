@@ -49,6 +49,15 @@ def queryTableData(service, project, dataset, table, startIndex=0):
         print 'Error in querytableData: ', pprint.pprint(err.content)
 
 
+def execute_bigquery_toprepos(service):
+    return queryTableData(service, "<project_id>", 'windows8app', 'top_repos', startIndex=0)
+
+def execute_bigquery_toplanguages(service):
+    return queryTableData(service, "<project_id>", 'windows8app', 'top_languages', startIndex=0)
+
+def execute_bigquery_mostactive_users(service):
+    return queryTableData(service, "<project_id>", 'windows8app', 'mostactive_users', startIndex=0)
+
 def execute_bigquery_githubarchive(service):
     query = """SELECT type, actor_attributes_login, payload_action, payload_pull_request_title, repository_name, repository_url, repository_description, repository_language, url, created_at as date
                 FROM [githubarchive:github.timeline]

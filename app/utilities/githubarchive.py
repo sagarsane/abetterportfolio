@@ -10,7 +10,7 @@ from apiclient.discovery import build
 from oauth2client.appengine import AppAssertionCredentials
 
 from mainhandler import Handler
-from ..utilities.github_archive_bigquery_handler import execute_bigquery_githubarchive
+from ..utilities.github_archive_bigquery_handler import execute_bigquery_githubarchive, execute_bigquery_toprepos, execute_bigquery_toplanguages, execute_bigquery_mostactive_users
 
 local_archive = { "etag" : "\"viowSXH0JIvMREGVicRUeTw4PZo/LPUtui-L1gif2w5oh2hCk24cZ-I\"",
   "kind" : "bigquery#tableDataList",
@@ -1087,11 +1087,34 @@ class GithubArchiveHTML(Handler):
 class GithubArchiveBigQuery(Handler):
     def get(self):
         self.response.headers['Content-Type'] = 'application/json'
-        """Local_parser_result"""
+        """Local_parser_result
         self.write(json.dumps(local_archive))
-        
-        """Remote_parser_result
+        """
+        """Remote_parser_result"""
         service = build("bigquery", "v2", http=http)        
         parsed_archive = execute_bigquery_githubarchive(service)
         self.write(json.dumps(parsed_archive))
-        """
+        
+
+
+class MostActiveUsers(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'
+        service = build("bigquery", "v2", http=http)
+        parsed_archive = execute_bigquery_mostactive_users(service)
+        self.write(json.dumps(parsed_archive))
+
+        
+class TopLanguages(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'
+        service = build("bigquery", "v2", http=http)
+        parsed_archive = execute_bigquery_toplanguages(service)
+        self.write(json.dumps(parsed_archive))
+        
+class TopRepos(Handler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'
+        service = build("bigquery", "v2", http=http)
+        parsed_archive = execute_bigquery_toprepos(service)
+        self.write(json.dumps(parsed_archive))

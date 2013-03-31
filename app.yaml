@@ -38,7 +38,16 @@ handlers:
 
 - url: /archive_data
   script: home.app
+ 
+- url: /toprepos
+  script: home.app
 
+- url: /mostactiveusers
+  script: home.app
+
+- url: /toplanguages
+  script: home.app
+  
 - url: /github_activity
   script: home.app
 

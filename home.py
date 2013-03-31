@@ -7,7 +7,7 @@ from app.content.projects import Projects
 from app.content.contact import Contact
 from app.content.achievements import Achievements
 from app.utilities.githubactivity import GithubActivity
-from app.utilities.githubarchive import GithubArchiveBigQuery, GithubArchiveHTML
+from app.utilities.githubarchive import GithubArchiveBigQuery, GithubArchiveHTML, TopRepos, TopLanguages, MostActiveUsers
 
 app = webapp2.WSGIApplication([('/home', MainPage),                                
                                ('/projects', Projects), 
@@ -17,4 +17,7 @@ app = webapp2.WSGIApplication([('/home', MainPage),
                                ('/achievements', Achievements),
                                ('/github_activity', GithubActivity),
                                ('/github_archive', GithubArchiveHTML),
-                               ('/archive_data', GithubArchiveBigQuery)], debug=True)
+                               ('/archive_data', GithubArchiveBigQuery),
+                               ('/toprepos', TopRepos),
+                               ('/toplanguages', TopLanguages),
+                               ('/mostactiveusers', MostActiveUsers)], debug=True)
